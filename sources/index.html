@@ -12,23 +12,22 @@
 
 <body>
     <nav id="barre_navigation" class="navbar navbar-expand">
-        <div class="container-fluid">
-            <a href="#" class="navbar-brand"><img class="img-fluid" src="assets/LOGOBDDrive.png" alt=""></a>
-        </div>
+        
         <ul class="navbar-nav">
+            <li class="p-3 nav-item"><a href="#" class="navbar-brand"><img id="logo_bd_drive" class="img-fluid" src="assets/LOGOBDDrive.svg" alt=""></a></li>
             <li class="p-3 nav-item">PANIER</li>
-            <li class="p-3 nav-item">RECHERCHE</li>
+            <li class="p-3 nav-item"><a href="#"><img id="logo_loupe" class="img-fluid" src="assets/loupe.svg" alt=""></a></li>
             <li class="p-3 nav-item">CONNEXION</li>
         </ul>
     </nav>
 
     <!-- corps de page -->
-    <div class="row">
+    <div   class="row">
         <!-- menu déroulant -->
-        <div class="col-12">
+        <div id="category" class="col-12">
             <div>
                 <label for="category">trier par : </label>
-                <select name="category" id="category">
+                <select name="category">
                     <option value="last">dernières sorties</option>
                     <option value="best">meilleures ventes</option>
                     <option value="classic">nos classiques</option>
@@ -37,26 +36,36 @@
         </div>
 
         <!-- affichage des BD -->
-        <div class="col-12">
-            <div id="showBD" class="row">
+        <div id="category2" class="col-md-2">
+            <div>
+                <label for="category">trier par : </label>
+                <select name="category">
+                    <option value="last">dernières sorties</option>
+                    <option value="best">meilleures ventes</option>
+                    <option value="classic">nos classiques</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-12 col-md-8">
+            <div id="show_bd" class="row">
                 <div class="col-6">
-                    <img class="img-fluid" src="albums/Arkezone-01-Le dôme.jpg" alt="">
-                    <div>titre BD</div>
+                    <img class=" col-12 img-fluid" src="albums/Arkezone-01-Le dôme.jpg" alt="">
+                    <div class="col-12">titre BD <span>prix</span></div>
                     <button>plus d'infos</button>
                 </div>
                 <div class="col-6">
                     <img class="img-fluid" src="albums/Astérix-03-Astérix et les Goths.jpg" alt="">
-                    <div>titre BD</div>
+                    <div>titre BD <span>prix</span></div>
                     <button>plus d'infos</button>
                 </div>
                 <div class="col-6">
                     <img class="img-fluid" src="albums/Blacksad-01-Quelque part entre les ombres.jpg" alt="">
-                    <div>titre BD</div>
+                    <div>titre BD <span>prix</span></div>
                     <button>plus d'infos</button>
                 </div>
                 <div class="col-6">
                     <img class="img-fluid" src="albums/Cristal-01-Venu dailleurs.jpg" alt="">
-                    <div>titre BD</div>
+                    <div>titre BD <span>prix</span></div>
                     <button>plus d'infos</button>
                 </div>
             </div>

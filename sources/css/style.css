@@ -1,8 +1,67 @@
+body{
+    text-align: center;
+}
+
 #barre_navigation ,#footer{
-    background-color: lavender;
-    color: lightsalmon;
+    background-color: #273c75;
+    color: #c23616;
+}
+
+#logo_bd_drive{
+    filter: invert(25%) sepia(67%) saturate(2289%) hue-rotate(352deg) brightness(92%) contrast(94%);
+    min-width: 55px;
+    width: 55px
+}
+
+#logo_loupe{
+    filter: invert(25%) sepia(67%) saturate(2289%) hue-rotate(352deg) brightness(92%) contrast(94%);
+    min-width: 35px;
+    width: 35px
 }
 
 .img-fluid{
-    min-width: 60px;
+    max-height: 150px;
+    width: auto;
+}
+
+/* hauteur du pied de page pour la taille minimale */
+#show_bd{
+    height: 86vh;
+}
+
+#category2{
+    display: none;
+}
+
+@media screen and (min-width: 375px){
+    #show_bd{
+        height: 72vh;
+    }
+}
+
+@media screen and (min-width: 425px){
+    #show_bd{
+        height: 75vh;
+    }
+}
+
+/* dès la taille médium */
+@media screen and (min-width: 576px){
+    #show_bd{
+        height: 73.5vh;
+    }
+
+    #category{
+        display: none;
+    }
+
+    #category2{
+        display: block;
+    }
+}
+
+@media screen and (min-width: 768px){
+    #show_bd{
+        height: 77.5vh;
+    }
 }

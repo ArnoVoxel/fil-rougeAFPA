@@ -1,0 +1,8 @@
+#barre_navigation ,#footer{
+    background-color: lavender;
+    color: lightsalmon;
+}
+
+.img-fluid{
+    min-width: 60px;
+}

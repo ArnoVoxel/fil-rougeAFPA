@@ -11,15 +11,15 @@
 </head>
 
 <body>
-    <nav id="barre_navigation" class="navbar navbar-expand">
-        
-        <ul class="navbar-nav">
-            <li class="p-3 nav-item"><a href="#" class="navbar-brand"><img id="logo_bd_drive" class="img-fluid" src="assets/LOGOBDDrive.svg" alt=""></a></li>
-            <li class="p-3 nav-item">PANIER</li>
-            <li class="p-3 nav-item"><a href="#"><img id="logo_loupe" class="img-fluid" src="assets/loupe.svg" alt=""></a></li>
-            <li class="p-3 nav-item">CONNEXION</li>
-        </ul>
-    </nav>
+    <div id="barre_navigation" class="w-auto row">
+            <div class="col-2 col-md-3 p-1 nav-item"><a href="#" class="navbar-brand"><img class="logo img-fluid" src="assets/BDDrive.svg" alt=""></a></div>
+            <div class="col-2 col-md-3 p-1 nav-item"><a href="#" class="navbar-brand"><img class="logo img-fluid" src="assets/panier.svg" alt=""></a></div>
+            <form class="col-6 col-md-3 p-1 d-flex">
+                <input class="form-control me-2" type="search" placeholder="rechercher" aria-label="rechercher">
+                <span><img class="logo img-nav" src="assets/loupe.svg" alt=""></span>
+            </form>
+            <div class="col-2 col-md-3 p-1 nav-item"><a href="#" class="navbar-brand"><img id="logo_bd_drive" class="logo img-fluid" src="assets/utilisateur.svg" alt=""></a></div>
+    </div>
 
     <!-- corps de page -->
     <div   class="row">

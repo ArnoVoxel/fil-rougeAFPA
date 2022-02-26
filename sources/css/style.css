@@ -18,9 +18,9 @@ body{
     display: none;
 }
 
-.hidden_space{
+/* .hidden_space{
     visibility: hidden;
-}
+} */
 
 form{
     height: 70px;
@@ -68,10 +68,10 @@ form{
 
 @media screen and (min-width: 768px){
     #random_display{
-        display: block;
+        display:inline-flex;
     }
 
     #show_bd{
-        height: 70vh;
+        height: 38vh;
     }
 }

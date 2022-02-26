@@ -14,13 +14,25 @@ body{
     height: 70px
 }
 
+#random_display{
+    display: none;
+}
+
+.hidden_space{
+    visibility: hidden;
+}
+
 form{
     height: 70px;
 }
 
+.image_grid{
+    height: ;
+}
+
 /* hauteur du pied de page pour la taille minimale */
 #show_bd{
-    height: 85vh;
+    height: 75vh;
 }
 
 #category2{
@@ -55,7 +67,11 @@ form{
 }
 
 @media screen and (min-width: 768px){
+    #random_display{
+        display: block;
+    }
+
     #show_bd{
-        height: 77.5vh;
+        height: 70vh;
     }
 }

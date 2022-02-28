@@ -52,8 +52,6 @@ function afficher_BD_random() {
         btn_card_BD.addEventListener('click', creer_ligne_panier);
         btn_card_BD.addEventListener('click', bulle_bouton_panier);
         document.getElementById(nb_random).appendChild(btn_card_BD);
-
-        console.log(sessionStorage.getItem(nb_random));
     }
 
     //afficher BD coup de coeur

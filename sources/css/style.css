@@ -68,6 +68,11 @@ form {
     max-height: 218px;
 }
 
+.image_panier {
+    height: 50px;
+    width: auto;
+}
+
 
 /* hauteur du pied de page pour la taille minimale */
 

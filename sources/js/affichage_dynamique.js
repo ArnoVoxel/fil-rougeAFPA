@@ -63,15 +63,47 @@ function afficher_details_BD() {
     //valeur aléatoire pour affichage initial
     choisir_BD_random();
 
-    var col_detail_BD = document.createElement('div');
-    col_detail_BD.setAttribute('class', 'col-6');
-    col_detail_BD.setAttribute('id', 'col_image_détail_BD');
-    document.getElementById('random_display').appendChild(col_detail_BD);
+    var col_container_image_BD_grande = document.createElement('div');
+    col_container_image_BD_grande.setAttribute('class', 'col-6');
+    col_container_image_BD_grande.setAttribute('id', 'col_container_BD');
+    document.getElementById('random_display').appendChild(col_container_image_BD_grande);
 
     var col_image_BD = document.createElement('img');
     col_image_BD.setAttribute('class', 'col-12 img-fluid image_big');
     col_image_BD.setAttribute('src', '../sources/albums/' + series.get(objet_album.idSerie).nom.replace(regex, "") + '-' + objet_album.numero + '-' + objet_album.titre.replace(regex, "") + '.jpg');
-    document.getElementById('col_image_détail_BD').appendChild(col_image_BD);
+    document.getElementById('col_container_BD').appendChild(col_image_BD);
 
+    var col_infos_BD_grande = document.createElement('div');
+    col_infos_BD_grande.setAttribute('class', 'col-6');
+    col_infos_BD_grande.setAttribute('id', 'col_infos_BD');
+    document.getElementById('random_display').appendChild(col_infos_BD_grande);
 
+    var col_serie_BD_grande = document.createElement('div');
+    col_serie_BD_grande.setAttribute('class', 'col-12');
+    col_serie_BD_grande.textContent = 'série : ' + series.get(objet_album.idSerie).nom;
+    document.getElementById('col_infos_BD').appendChild(col_serie_BD_grande);
+
+    var col_titre_BD_grande = document.createElement('div');
+    col_titre_BD_grande.setAttribute('class', 'col-12');
+    col_titre_BD_grande.textContent = 'titre : ' + objet_album.titre;
+    document.getElementById('col_infos_BD').appendChild(col_titre_BD_grande);
+
+    var col_auteur_BD_grande = document.createElement('div');
+    col_auteur_BD_grande.setAttribute('class', 'col-12');
+    col_auteur_BD_grande.textContent = 'auteur : ' + auteurs.get(objet_album.idAuteur).nom;
+    document.getElementById('col_infos_BD').appendChild(col_auteur_BD_grande);
+
+    var col_tome_BD_grande = document.createElement('div');
+    col_tome_BD_grande.setAttribute('class', 'col-12');
+    col_tome_BD_grande.textContent = 'tome N° ' + objet_album.numero;
+    document.getElementById('col_infos_BD').appendChild(col_tome_BD_grande);
+
+    var col_resume_BD_grande = document.createElement('div');
+    col_resume_BD_grande.setAttribute('class', 'col-12');
+    col_resume_BD_grande.textContent = 'résumé : \nLorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, pariatur. Voluptate hic ut molestias voluptatum cumque dicta quam nesciunt nulla animi accusamus. Harum tempora dolores sint officiis iusto enim nam!';
+    document.getElementById('col_infos_BD').appendChild(col_resume_BD_grande);
+
+    var col_bouton_panier_BD_grande = document.createElement('button');
+    col_bouton_panier_BD_grande.textContent = 'Ajouter au panier';
+    document.getElementById('col_infos_BD').appendChild(col_bouton_panier_BD_grande);
 }

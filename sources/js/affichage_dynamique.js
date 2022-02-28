@@ -49,5 +49,29 @@ function afficher_BD_random() {
         document.getElementById('col_card_BD_category' + i).appendChild(btn_card_BD);
     }
 
+    //afficher BD coup de coeur
+
+    var titre_coup_de_coeur = document.createElement('div');
+    titre_coup_de_coeur.setAttribute('class', 'col-12 mb-3');
+    titre_coup_de_coeur.textContent = 'NOTRE COUP DE COEUR DU MOMENT';
+    document.getElementById('random_display').appendChild(titre_coup_de_coeur);
+
+    afficher_details_BD();
+}
+
+function afficher_details_BD() {
+    //valeur aléatoire pour affichage initial
+    choisir_BD_random();
+
+    var col_detail_BD = document.createElement('div');
+    col_detail_BD.setAttribute('class', 'col-6');
+    col_detail_BD.setAttribute('id', 'col_image_détail_BD');
+    document.getElementById('random_display').appendChild(col_detail_BD);
+
+    var col_image_BD = document.createElement('img');
+    col_image_BD.setAttribute('class', 'col-12 img-fluid image_big');
+    col_image_BD.setAttribute('src', '../sources/albums/' + series.get(objet_album.idSerie).nom.replace(regex, "") + '-' + objet_album.numero + '-' + objet_album.titre.replace(regex, "") + '.jpg');
+    document.getElementById('col_image_détail_BD').appendChild(col_image_BD);
+
 
 }

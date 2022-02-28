@@ -27,6 +27,10 @@ body {
     height: 80px;
 }
 
+#bulle_notification {
+    visibility: hidden;
+}
+
 .logo {
     filter: invert(25%) sepia(67%) saturate(2289%) hue-rotate(352deg) brightness(92%) contrast(94%);
     min-width: 35px;

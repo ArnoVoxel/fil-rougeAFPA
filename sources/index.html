@@ -13,19 +13,25 @@
 
 <body>
     <div id="barre_navigation" class="w-auto row">
-            <div class="col-2 col-md-3 p-1 nav-item"><a href="#" class="navbar-brand"><img class="logo img-fluid" src="assets/BDDrive.svg" alt=""></a></div>
-            <div class="col-2 col-md-3 p-1 nav-item"><a href="#" class="navbar-brand"><img class="logo img-fluid" src="assets/panier.svg" alt=""></a></div>
-            <form class="col-6 col-md-3 p-1 d-flex nosubmit">
-                <input class="form-control me-2 nosubmit" type="nosubmit" placeholder="rechercher" aria-label="rechercher">
-            </form>
-            <div class="col-2 col-md-3 p-1 nav-item"><a href="#" class="navbar-brand"><img id="logo_bd_drive" class="logo img-fluid" src="assets/utilisateur.svg" alt=""></a></div>
+        <div class="col-2 col-md-3 p-1 nav-item">
+            <a href="#" class="navbar-brand"><img class="logo img-fluid" src="assets/BDDrive.svg" alt=""></a>
+        </div>
+        <div class="col-2 col-md-3 p-1 nav-item">
+            <a href="#" class="navbar-brand"><img class="logo img-fluid" src="assets/panier.svg" alt=""></a>
+        </div>
+        <form class="col-6 col-md-3 p-1 d-flex nosubmit">
+            <input class="form-control me-2 nosubmit" type="nosubmit" placeholder="rechercher" aria-label="rechercher">
+        </form>
+        <div class="col-2 col-md-3 p-1 nav-item">
+            <a href="#" class="navbar-brand"><img id="logo_bd_drive" class="logo img-fluid" src="assets/utilisateur.svg" alt=""></a>
+        </div>
     </div>
 
     <!-- affichage BD en grand taille desktop -->
     <div id="random_display" class="row ms-2 me-5 mb-2">
 
         <div class="col-12 mb-3">
-            Notre coup de coeur : 
+            Notre coup de coeur :
         </div>
         <div class="col-6 ">
             <img class="col-12 img-fluid image_big" src="albums/Gaston-11-Le repos du gaffeur.jpg" alt="">
@@ -40,7 +46,7 @@
     </div>
 
     <!-- corps de page -->
-    <div   class="row">
+    <div class="row">
         <!-- menu déroulant -->
         <div id="category" class="col-12 m-2">
             <div>
@@ -66,28 +72,10 @@
         </div>
         <div class="col-12 col-md-8">
             <div id="show_bd" class="row">
-                <div class="col-6 col-md-3 ">
-                    <img class="img-fluid image_grid" src="albums/Arkezone-01-Le dôme.jpg" alt="">
-                    <div class="col-12">titre BD <span>prix</span></div>
-                    <button>plus d'infos</button>
-                </div>
-                <div class="col-6 col-md-3 ">
-                    <img class="img-fluid image_grid" src="albums/Astérix-03-Astérix et les Goths.jpg" alt="">
-                    <div>titre BD <span>prix</span></div>
-                    <button>plus d'infos</button>
-                </div>
-                <div class="col-6 col-md-3 ">
-                    <img class="img-fluid image_grid" src="albums/Blacksad-01-Quelque part entre les ombres.jpg" alt="">
-                    <div>titre BD <span>prix</span></div>
-                    <button>plus d'infos</button>
-                </div>
-                <div class="col-6 col-md-3 ">
-                    <img class="img-fluid image_grid" src="albums/Cristal-01-Venu dailleurs.jpg" alt="">
-                    <div>titre BD <span>prix</span></div>
-                    <button>plus d'infos</button>
-                </div>
+
             </div>
         </div>
+    </div>
     </div>
 
     <!-- footer -->
@@ -100,13 +88,15 @@
         </div>
         <div class="col-6">
             BDDrive
-            <br>
-            20049 rue de la Certification
-            <br>
-            14000 CAEN
+            <br> 20049 rue de la Certification
+            <br> 14000 CAEN
         </div>
     </div>
 
+    <script src="data/albums.js"></script>
+    <script src="data/auteurs.js"></script>
+    <script src="data/series.js"></script>
+    <script src="js/affichage_dynamique.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 

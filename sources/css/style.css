@@ -1,26 +1,44 @@
-body{
+@font-face {
+    font-family: 'Kristen ITC';
+    src: url('../font/KristenITC-Regular.woff2') format('woff2'), url('../font/KristenITC-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Comic Sans MS';
+    src: url('../font/ComicSansMS.woff2') format('woff2'), url('../font/ComicSansMS.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Kristen ITC';
     text-align: center;
     text-overflow: ellipsis;
 }
 
-#barre_navigation ,#footer{
+#barre_navigation,
+#footer {
     background-color: #273c75;
     color: #c23616;
     height: 80px;
 }
 
-.logo{
+.logo {
     filter: invert(25%) sepia(67%) saturate(2289%) hue-rotate(352deg) brightness(92%) contrast(94%);
     min-width: 35px;
     height: 70px
 }
 
-form.nosubmit{
+form.nosubmit {
     border: none;
     padding: 0;
 }
 
-input.nosubmit{
+input.nosubmit {
     /* max-width: 250px; */
     filter: invert(25%) sepia(67%) saturate(2289%) hue-rotate(352deg) brightness(92%) contrast(94%);
     border: 1px solid #555;
@@ -29,84 +47,87 @@ input.nosubmit{
     background: transparent url("../assets/loupe.svg") no-repeat 5px center;
 }
 
-#random_display{
+#random_display {
     display: none;
 }
+
 
 /* .hidden_space{
     visibility: hidden;
 } */
 
-form{
+form {
     height: 70px;
 }
 
-.image_grid{
-    max-height:218px ;
+.image_grid {
+    max-height: 218px;
 }
 
+
 /* hauteur du pied de page pour la taille minimale */
-#show_bd{
+
+#show_bd {
     height: 100vh;
 }
 
-#category2{
+#category2 {
     display: none;
 }
 
-@media screen and (min-width: 375px){
-    #show_bd{
+a:link {
+    color: white;
+}
+
+@media screen and (min-width: 375px) {
+    #show_bd {
         height: 72vh;
     }
 }
 
-@media screen and (min-width: 425px){
-    #show_bd{
+@media screen and (min-width: 425px) {
+    #show_bd {
         height: 75vh;
     }
 }
 
+
 /* dès la taille médium */
-@media screen and (min-width: 576px){
-    #show_bd{
+
+@media screen and (min-width: 576px) {
+    #show_bd {
         height: 73.5vh;
     }
-
-    #category{
+    #category {
         display: none;
     }
-
-    #category2{
+    #category2 {
         display: block;
     }
 }
 
-@media screen and (min-width: 768px){
-    #random_display{
-        display:inline-flex;
+@media screen and (min-width: 768px) {
+    #random_display {
+        display: inline-flex;
     }
-
-    .image_big{
+    .image_big {
         max-height: 400px;
         width: auto;
     }
-
-    #show_bd{
+    #show_bd {
         height: 30vh;
     }
 }
 
-@media screen and (min-width: 1024px){
-    #random_display{
-        display:inline-flex;
+@media screen and (min-width: 1024px) {
+    #random_display {
+        display: inline-flex;
     }
-
-   .image_big{
+    .image_big {
         max-height: 400px;
         width: auto;
     }
-
-    #show_bd{
+    #show_bd {
         height: 32vh;
     }
 }

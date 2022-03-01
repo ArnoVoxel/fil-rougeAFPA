@@ -7,7 +7,11 @@ var bouton_temp = document.getElementById('paiement');
 bouton_temp.addEventListener('click', function() {
     localStorage.clear();
     sessionStorage.clear();
+
     alert('VOUS AVEZ BIEN ETE PRELEVE, MERCI :)');
+    afficher_contenu_panier();
+    afficher_total_panier();
+
 });
 
 //FONCTIONS

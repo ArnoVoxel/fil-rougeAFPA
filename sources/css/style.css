@@ -34,7 +34,7 @@ body {
 .logo {
     filter: invert(25%) sepia(67%) saturate(2289%) hue-rotate(352deg) brightness(92%) contrast(94%);
     min-width: 35px;
-    height: 70px
+    height: 70px;
 }
 
 form.nosubmit {

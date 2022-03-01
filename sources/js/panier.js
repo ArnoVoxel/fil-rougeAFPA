@@ -61,7 +61,6 @@ function creer_ligne_panier() {
  * incrémente la valeur de la bulle sur le bouton panier
  */
 function bulle_bouton_panier() {
-    console.log(localStorage.length);
     document.getElementById('bulle_notification').textContent = localStorage.length;
     if (localStorage.length > 0) {
         document.getElementById('bulle_notification').style.visibility = 'visible';

@@ -5,4 +5,5 @@ function supprimer_ligne_panier() {
     console.log(this.id.split(''));
     localStorage.removeItem('ligne' + this.id.split('')[6]);
     afficher_contenu_panier();
+    bulle_bouton_panier();
 }

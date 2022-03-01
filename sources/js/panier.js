@@ -11,8 +11,10 @@ bouton_temp.addEventListener('click', function() {
     alert('VOUS AVEZ BIEN ETE PRELEVE, MERCI :)');
     afficher_contenu_panier();
     afficher_total_panier();
-
+    bulle_bouton_panier();
 });
+
+bulle_bouton_panier();
 
 //FONCTIONS
 
@@ -59,10 +61,11 @@ function creer_ligne_panier() {
  * incrémente la valeur de la bulle sur le bouton panier
  */
 function bulle_bouton_panier() {
+    console.log(localStorage.length);
     document.getElementById('bulle_notification').textContent = localStorage.length;
-    if (ligne_panier > 0) {
+    if (localStorage.length > 0) {
         document.getElementById('bulle_notification').style.visibility = 'visible';
-    } else if (ligne_panier == 0) {
+    } else if (localStorage.length == 0) {
         document.getElementById('bulle_notification').style.visibility = 'hidden';
     }
 }
@@ -91,7 +94,8 @@ function modifier_quantite_panier() {
     // afficher_contenu_panier();
     //modifier ici via les id pour ne pas changer les id des boutons
     console.log(this.id.split('')[6]);
-    document.getElementById('sous_totalligne' + this.id.split('')[6]).textContent = quantite_temp * albums.get((ligne_panier_temp.id_album.toString())).prix;
+    var sous_total_temp = quantite_temp * albums.get((ligne_panier_temp.id_album.toString())).prix
+    document.getElementById('sous_totalligne' + this.id.split('')[6]).textContent = sous_total_temp.toFixed(2);
     afficher_contenu_panier();
     afficher_total_panier();
 }
@@ -100,20 +104,9 @@ function afficher_total_panier() {
     // var ligneExistante = localStorage.getItem('ligne' + ligne_panier);
     var ligneExistante = localStorage.getItem('ligne' + ligne_panier);
     total_panier = 0;
-    // while (typeof(ligneExistante) == 'string') {
-
-    //     //récypérer le prix avec l'id
-    //     var temp = JSON.parse(ligneExistante).id_album;
-
-    //     total_panier += JSON.parse(ligneExistante).quantite * albums.get(temp.toString()).prix;
-    //     //incrémente le numéro de ligne
-    //     ligne_panier++;
-    //     ligneExistante = localStorage.getItem('ligne' + ligne_panier);
-    // }
 
     if (localStorage.length > 0) {
         for (let i = 0; i < localStorage.length; i++) {
-            console.log(localStorage.key(i));
             var objet_panier = JSON.parse(localStorage.getItem(localStorage.key(i)));
             total_panier += objet_panier.quantite * albums.get((objet_panier.id_album.toString())).prix;
         }

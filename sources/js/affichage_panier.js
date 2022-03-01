@@ -8,19 +8,7 @@ function afficher_contenu_panier() {
 
     document.getElementById('contenu_panier').textContent = ' ';
 
-    // if (typeof(localStorage.getItem('ligne' + numero_ligne_storage)) != 'string') {
-    //     document.getElementById('contenu_panier').textContent = 'VOTRE PANIER EST VIDE';
-    // } else {
-    //     while (typeof(localStorage.getItem('ligne' + numero_ligne_storage)) == 'string') {
-    //         var objet_panier = JSON.parse(localStorage.getItem('ligne' + numero_ligne_storage));
-    //         numero_ligne_storage++;
-    //         creer_element_html_panier(objet_panier);
-
-    //     }
-    // }
-
     for (let i = 0; i < localStorage.length; i++) {
-        console.log(localStorage.key(i));
         var objet_panier = JSON.parse(localStorage.getItem(localStorage.key(i)));
         numero_ligne_storage++;
         creer_element_html_panier(objet_panier, localStorage.key(i));

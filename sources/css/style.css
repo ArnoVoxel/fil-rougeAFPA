@@ -77,6 +77,10 @@ form {
     font-size: small;
 }
 
+#montant_panier_total {
+    border: 1px solid black;
+}
+
 
 /* hauteur du pied de page pour la taille minimale */
 

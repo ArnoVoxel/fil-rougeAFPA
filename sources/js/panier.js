@@ -68,7 +68,9 @@ function bulle_bouton_panier() {
  */
 function modifier_quantite_panier() {
     //donne la ligne correspondant en localStorage
-    var ligne_panier_temp = JSON.parse(localStorage.getItem('ligne' + this.id.split('')[1]));
+    console.log(this.id);
+    console.log('ligne' + this.id.split('')[6]);
+    var ligne_panier_temp = JSON.parse(localStorage.getItem('ligne' + this.id.split('')[6]));
     var quantite_temp = ligne_panier_temp.quantite;
 
     var nom_bouton = this.id;
@@ -81,23 +83,40 @@ function modifier_quantite_panier() {
         }
     }
 
-    localStorage.setItem('ligne' + this.id.split('')[1], '{"id_album":' + ligne_panier_temp.id_album + ',"quantite":' + quantite_temp + '}');
+    localStorage.setItem('ligne' + this.id.split('')[6], '{"id_album":' + ligne_panier_temp.id_album + ',"quantite":' + quantite_temp + '}');
+    // afficher_contenu_panier();
+    //modifier ici via les id pour ne pas changer les id des boutons
+    console.log(this.id.split('')[6]);
+    document.getElementById('sous_totalligne' + this.id.split('')[6]).textContent = quantite_temp * albums.get((ligne_panier_temp.id_album.toString())).prix;
     afficher_contenu_panier();
+    afficher_total_panier();
 }
 
 function afficher_total_panier() {
+    // var ligneExistante = localStorage.getItem('ligne' + ligne_panier);
     var ligneExistante = localStorage.getItem('ligne' + ligne_panier);
     total_panier = 0;
-    while (typeof(ligneExistante) == 'string') {
+    // while (typeof(ligneExistante) == 'string') {
 
-        //récypérer le prix avec l'id
-        var temp = JSON.parse(ligneExistante).id_album;
+    //     //récypérer le prix avec l'id
+    //     var temp = JSON.parse(ligneExistante).id_album;
 
-        total_panier += JSON.parse(ligneExistante).quantite * albums.get(temp.toString()).prix;
-        //incrémente le numéro de ligne
-        ligne_panier++;
-        ligneExistante = localStorage.getItem('ligne' + ligne_panier);
+    //     total_panier += JSON.parse(ligneExistante).quantite * albums.get(temp.toString()).prix;
+    //     //incrémente le numéro de ligne
+    //     ligne_panier++;
+    //     ligneExistante = localStorage.getItem('ligne' + ligne_panier);
+    // }
+
+    if (localStorage.length > 0) {
+        for (let i = 0; i < localStorage.length; i++) {
+            console.log(localStorage.key(i));
+            var objet_panier = JSON.parse(localStorage.getItem(localStorage.key(i)));
+            total_panier += objet_panier.quantite * albums.get((objet_panier.id_album.toString())).prix;
+        }
+    } else {
+        console.log('PANIER VIDE');
     }
+
     document.getElementById('montant_panier_total').textContent = total_panier.toFixed(2) + ' €';
     ligne_panier = 1;
 }

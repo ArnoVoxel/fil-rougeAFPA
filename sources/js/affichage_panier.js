@@ -6,6 +6,8 @@ bouton_panier_barre_navigation.addEventListener('click', afficher_contenu_panier
 
 function afficher_contenu_panier() {
 
+    document.getElementById('contenu_panier').textContent = ' ';
+
     if (typeof(localStorage.getItem('ligne' + numero_ligne_storage)) != 'string') {
         document.getElementById('contenu_panier').textContent = 'VOTRE PANIER EST VIDE';
     } else {
@@ -13,29 +15,32 @@ function afficher_contenu_panier() {
             var objet_panier = JSON.parse(localStorage.getItem('ligne' + numero_ligne_storage));
             numero_ligne_storage++;
             creer_element_html_panier(objet_panier);
+
         }
     }
-
+    numero_ligne_storage = 1;
+    afficher_total_panier();
 }
 
 function creer_element_html_panier(objet_album) {
-    var ligne_affichage_panier = document.createElement('div');
-    ligne_affichage_panier.setAttribute('class', 'row');
-    document.getElementById('contenu_panier').appendChild(ligne_affichage_panier);
+
+    var id_album_local_storage = objet_album.id_album;
+    var element_album = albums.get(id_album_local_storage.toString());
+    var ligne_affichage_panier = document.getElementById('contenu_panier');
 
     var image_panier = document.createElement('img');
-    image_panier.setAttribute('class', 'col-2 mb-1 image_panier');
-    image_panier.setAttribute('src', '../sources/albums/' + series.get(objet_album.idSerie).nom.replace(regex, "") + '-' + objet_album.numero + '-' + objet_album.titre.replace(regex, "") + '.jpg');
+    image_panier.setAttribute('class', 'col-2 image_panier');
+    image_panier.setAttribute('src', '../sources/albums/' + series.get(element_album.idSerie).nom.replace(regex, "") + '-' + element_album.numero + '-' + element_album.titre.replace(regex, "") + '.jpg');
     ligne_affichage_panier.appendChild(image_panier);
 
     var titre_panier = document.createElement('div');
     titre_panier.setAttribute('class', 'col-4');
-    titre_panier.textContent = objet_album.titre;
+    titre_panier.textContent = element_album.titre;
     ligne_affichage_panier.appendChild(titre_panier);
 
     var prix_panier = document.createElement('div');
     prix_panier.setAttribute('class', 'col-2');
-    prix_panier.textContent = objet_album.prix + ' €';
+    prix_panier.textContent = element_album.prix + ' €';
     ligne_affichage_panier.appendChild(prix_panier);
 
     //container pour la quantité et ses boutons
@@ -50,22 +55,42 @@ function creer_element_html_panier(objet_album) {
     //quantité panier
     var quantite_panier = document.createElement('div');
     quantite_panier.setAttribute('class', 'col-12');
-    quantite_panier.textContent = "1";
+    quantite_panier.textContent = objet_album.quantite;
     quantite_row_panier.appendChild(quantite_panier);
 
     //boutons du panier
     var bouton_plus = document.createElement('button');
+    bouton_plus.setAttribute('class', 'col-6');
+    bouton_plus.setAttribute('id', '+' + (numero_ligne_storage - 1));
     bouton_plus.textContent = '+';
+    //créer un abonnement pour la quantité
+    bouton_plus.addEventListener('click', modifier_quantite_panier);
     quantite_row_panier.appendChild(bouton_plus);
 
     var bouton_moins = document.createElement('button');
+    bouton_moins.setAttribute('class', 'col-6');
+    bouton_moins.setAttribute('id', '-' + (numero_ligne_storage - 1));
     bouton_moins.textContent = '-';
+    //créer un abonnement pour la quantité
+    bouton_moins.addEventListener('click', modifier_quantite_panier);
     quantite_row_panier.appendChild(bouton_moins);
 
+    var sous_total_container_panier = document.createElement('div');
+    sous_total_container_panier.setAttribute('class', 'col-2');
+    ligne_affichage_panier.appendChild(sous_total_container_panier);
+
     var sous_total_panier = document.createElement('div');
-    sous_total_panier.setAttribute('class', 'col-2');
-    sous_total_panier.textContent = objet_album.prix;
-    ligne_affichage_panier.appendChild(sous_total_panier);
+    sous_total_panier.setAttribute('class', 'row');
+    sous_total_container_panier.appendChild(sous_total_panier);
+
+    var sous_total_valeur_panier = document.createElement('div');
+    sous_total_valeur_panier.setAttribute('class', 'col-8');
+    sous_total_valeur_panier.textContent = (element_album.prix * objet_album.quantite).toFixed(2) + ' €';
+    sous_total_panier.appendChild(sous_total_valeur_panier);
 
     //bouton supprimer
+    var bouton_supprimer = document.createElement('button');
+    bouton_supprimer.setAttribute('class', 'col-2');
+    bouton_supprimer.textContent = 'X';
+    sous_total_panier.appendChild(bouton_supprimer);
 }

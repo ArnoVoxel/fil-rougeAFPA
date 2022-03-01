@@ -21,10 +21,13 @@ function choisir_BD_random() {
 
     //crée l'objet BD à partir du chiffre aléatorie
     objet_album = albums.get(nb_random.toString());
-    sessionStorage.setItem(nb_random, JSON.stringify(objet_album));
+
     return nb_random;
 }
 
+/**
+ * affiche 4 BD aléatoires pour simuler les catégories pré remplies
+ */
 function afficher_BD_random() {
     //boucle qui crée le nombre de BD dans la partie category
     //le nombre pourra être modifié par l'utilisateur
@@ -64,10 +67,10 @@ function afficher_BD_random() {
     afficher_details_BD();
 }
 
+/**
+ * affiche une image aléatoire en grand format pour la taille desktop
+ */
 function afficher_details_BD() {
-
-
-
     //valeur aléatoire pour affichage initial
     choisir_BD_random();
 

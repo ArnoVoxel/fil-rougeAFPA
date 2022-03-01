@@ -73,11 +73,15 @@ form {
     width: auto;
 }
 
+.modal {
+    font-size: small;
+}
+
 
 /* hauteur du pied de page pour la taille minimale */
 
 #show_bd {
-    height: 100vh;
+    height: 80vh;
 }
 
 #category2 {
@@ -90,13 +94,13 @@ a:link {
 
 @media screen and (min-width: 375px) {
     #show_bd {
-        height: 72vh;
+        height: 78vh;
     }
 }
 
 @media screen and (min-width: 425px) {
     #show_bd {
-        height: 75vh;
+        height: 80vh;
     }
 }
 
@@ -105,7 +109,7 @@ a:link {
 
 @media screen and (min-width: 576px) {
     #show_bd {
-        height: 73.5vh;
+        height: 85vh;
     }
     #category {
         display: none;
@@ -124,7 +128,7 @@ a:link {
         width: auto;
     }
     #show_bd {
-        height: 30vh;
+        height: 45vh;
     }
 }
 
@@ -137,6 +141,6 @@ a:link {
         width: auto;
     }
     #show_bd {
-        height: 32vh;
+        height: 41vh;
     }
 }

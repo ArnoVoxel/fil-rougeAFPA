@@ -1,11 +1,13 @@
 //déclaration
 var ligne_panier = 1;
+var total_panier = 0;
 
-//temporaire pour vider le Storage
-var bouton_temp = document.getElementById('logo_utilisateur');
+//pour vider le Storage
+var bouton_temp = document.getElementById('paiement');
 bouton_temp.addEventListener('click', function() {
     localStorage.clear();
     sessionStorage.clear();
+    alert('VOUS AVEZ BIEN ETE PRELEVE, MERCI :)');
 });
 
 //FONCTIONS
@@ -15,26 +17,87 @@ bouton_temp.addEventListener('click', function() {
  */
 function creer_ligne_panier() {
 
+    //récupération de l'id dans la nom de div du parent
+    var parent_div = this.parentNode;
+    var parent_id = parent_div.id;
+    var is_ligne = true;
+
     //contrôle si ligne existante pour ne pas l'écraser
     var ligneExistante = localStorage.getItem('ligne' + ligne_panier);
 
     while (typeof(ligneExistante) == 'string') {
+
+        //si ligne existante et titre déjà présent en local storage
+        //alors incrémente la quantité
+        if (JSON.parse(ligneExistante).id_album == parent_id) {
+            var quantite_temp = JSON.parse(ligneExistante).quantite;
+            quantite_temp += 1;
+            localStorage.setItem('ligne' + ligne_panier, '{"id_album":' + parent_id + ',"quantite":' + quantite_temp + '}');
+            is_ligne = false;
+        }
+
+        //sinon incrémente le numéro de ligne
         ligne_panier++;
         ligneExistante = localStorage.getItem('ligne' + ligne_panier);
     }
 
-    //récupération de l'id dans la nom de div du parent
-    var parent_div = this.parentNode;
-    var parent_id = parent_div.id;
+    //si il n'y a pas de ligne dont la quantité a augmenté
+    //on peut créer une nouvelle ligne
+    if (is_ligne) {
+        localStorage.setItem('ligne' + ligne_panier, '{"id_album":' + parent_id + ',"quantite":1}');
+    }
 
-    localStorage.setItem('ligne' + ligne_panier, JSON.stringify(albums.get(parent_id)));
+    ligne_panier = 1;
+    is_ligne = true;
 }
 
+/**
+ * incrémente la valeur de la bulle sur le bouton panier
+ */
 function bulle_bouton_panier() {
-    document.getElementById('bulle_notification').textContent = ligne_panier;
+    document.getElementById('bulle_notification').textContent = localStorage.length;
     if (ligne_panier > 0) {
         document.getElementById('bulle_notification').style.visibility = 'visible';
     } else if (ligne_panier == 0) {
         document.getElementById('bulle_notification').style.visibility = 'hidden';
     }
+}
+
+/**
+ * modifier les quantités dans le panier avec les boutons + et -
+ */
+function modifier_quantite_panier() {
+    //donne la ligne correspondant en localStorage
+    var ligne_panier_temp = JSON.parse(localStorage.getItem('ligne' + this.id.split('')[1]));
+    var quantite_temp = ligne_panier_temp.quantite;
+
+    var nom_bouton = this.id;
+
+    if (nom_bouton.includes("+")) {
+        quantite_temp += 1;
+    } else {
+        if (quantite_temp > 0) {
+            quantite_temp -= 1;
+        }
+    }
+
+    localStorage.setItem('ligne' + this.id.split('')[1], '{"id_album":' + ligne_panier_temp.id_album + ',"quantite":' + quantite_temp + '}');
+    afficher_contenu_panier();
+}
+
+function afficher_total_panier() {
+    var ligneExistante = localStorage.getItem('ligne' + ligne_panier);
+    total_panier = 0;
+    while (typeof(ligneExistante) == 'string') {
+
+        //récypérer le prix avec l'id
+        var temp = JSON.parse(ligneExistante).id_album;
+
+        total_panier += JSON.parse(ligneExistante).quantite * albums.get(temp.toString()).prix;
+        //incrémente le numéro de ligne
+        ligne_panier++;
+        ligneExistante = localStorage.getItem('ligne' + ligne_panier);
+    }
+    document.getElementById('montant_panier_total').textContent = total_panier.toFixed(2) + ' €';
+    ligne_panier = 1;
 }

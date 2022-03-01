@@ -55,11 +55,6 @@ input.nosubmit {
     display: none;
 }
 
-
-/* .hidden_space{
-    visibility: hidden;
-} */
-
 form {
     height: 70px;
 }
@@ -79,6 +74,10 @@ form {
 
 #montant_panier_total {
     border: 1px solid black;
+}
+
+#row_panier_total {
+    display: none;
 }
 
 

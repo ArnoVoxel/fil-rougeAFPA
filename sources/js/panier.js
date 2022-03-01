@@ -74,8 +74,6 @@ function bulle_bouton_panier() {
  */
 function modifier_quantite_panier() {
     //donne la ligne correspondant en localStorage
-    console.log(this.id);
-    console.log('ligne' + this.id.split('')[6]);
     var ligne_panier_temp = JSON.parse(localStorage.getItem('ligne' + this.id.split('')[6]));
     var quantite_temp = ligne_panier_temp.quantite;
 
@@ -92,7 +90,6 @@ function modifier_quantite_panier() {
     localStorage.setItem('ligne' + this.id.split('')[6], '{"id_album":' + ligne_panier_temp.id_album + ',"quantite":' + quantite_temp + '}');
     // afficher_contenu_panier();
     //modifier ici via les id pour ne pas changer les id des boutons
-    console.log(this.id.split('')[6]);
     var sous_total_temp = quantite_temp * albums.get((ligne_panier_temp.id_album.toString())).prix
     document.getElementById('sous_totalligne' + this.id.split('')[6]).textContent = sous_total_temp.toFixed(2);
     afficher_contenu_panier();
@@ -105,12 +102,14 @@ function afficher_total_panier() {
     total_panier = 0;
 
     if (localStorage.length > 0) {
+        document.getElementById('row_panier_total').style.display = "block";
         for (let i = 0; i < localStorage.length; i++) {
             var objet_panier = JSON.parse(localStorage.getItem(localStorage.key(i)));
             total_panier += objet_panier.quantite * albums.get((objet_panier.id_album.toString())).prix;
         }
     } else {
-        console.log('PANIER VIDE');
+        document.getElementById('contenu_panier').textContent = 'VOTRE PANIER EST VIDE';
+        document.getElementById('row_panier_total').style.display = "none";
     }
 
     document.getElementById('montant_panier_total').textContent = total_panier.toFixed(2) + ' €';

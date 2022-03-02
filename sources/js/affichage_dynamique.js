@@ -8,6 +8,8 @@ var tableau_storage_category_last = [];
 var tableau_storage_category_best = [];
 var tableau_storage_category_classic = [];
 
+var bouton_accueil = document.getElementById('accueil');
+
 var nb_random = 0;
 
 //attention aux accents dans les noms d'images
@@ -17,6 +19,12 @@ const regex = /['!?.":$]/g;
 creer_session_storage();
 
 afficher_BD_random(tableau_storage_category_last, nombre_BD_category);
+
+bouton_accueil.addEventListener('click', function() {
+    afficher_BD_random(tableau_storage_category_last, nombre_BD_category);
+    //réafficher la div category
+    document.getElementById('row_category').style.display = 'block';
+});
 
 function choisir_BD_random() {
     do {
@@ -54,7 +62,7 @@ function creer_session_storage() {
 }
 
 /**
- * affiche 4 BD aléatoires pour simuler les catégories pré remplies
+ * affiche 4 BD aléatoires pour simuler les catégories pré remplies + la BD en taille desktop
  */
 function afficher_BD_random(tableau_category, nombre_affichage) {
 
@@ -100,15 +108,21 @@ function afficher_BD_random(tableau_category, nombre_affichage) {
     titre_coup_de_coeur.textContent = 'NOTRE COUP DE COEUR DU MOMENT';
     document.getElementById('random_display').appendChild(titre_coup_de_coeur);
 
-    afficher_details_BD();
+    afficher_details_BD(sessionStorage.getItem('grand'));
+    console.log(sessionStorage.getItem('grand'));
 }
 
 /**
  * affiche une image aléatoire en grand format pour la taille desktop
  */
-function afficher_details_BD() {
-    //valeur aléatoire pour affichage initial
-    choisir_BD_random();
+function afficher_details_BD(id_session_storage) {
+
+    //clear la div
+    document.getElementById('random_display').textContent = ' ';
+
+    console.log(id_session_storage);
+
+    objet_album = albums.get(id_session_storage);
 
     //container de l'image BD
     var col_container_image_BD_grande = document.createElement('div');

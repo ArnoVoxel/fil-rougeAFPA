@@ -14,7 +14,7 @@
 <body>
     <div id="barre_navigation" class="w-auto row sticky-md-top">
         <div class="col-2 col-md-3 p-1 nav-item">
-            <a href="#" class="navbar-brand"><img class="logo img-fluid" src="assets/BDDrive.svg" alt=""></a>
+            <a href="" class="navbar-brand"><img class="logo img-fluid" src="assets/BDDrive.svg" alt=""></a>
         </div>
         <div class="col-2 col-md-3 p-1 nav-item position-relative" data-bs-toggle="modal" data-bs-target="#panier_modal">
             <button id="bouton_panier_barre_navigation" type="button" class="btn">
@@ -75,7 +75,7 @@
     </div>
 
     <!-- corps de page -->
-    <div class="row">
+    <div id="row_category" class="row">
         <!-- menu déroulant -->
         <div id="category" class="col-12 m-2">
             <div>
@@ -126,6 +126,7 @@
     <script src="data/auteurs.js"></script>
     <script src="data/series.js"></script>
 
+    <script src="js/affichage_detail.js"></script>
     <script src="js/panier.js"></script>
     <script src="js/supprimer_panier.js"></script>
     <script src="js/affichage_dynamique.js"></script>

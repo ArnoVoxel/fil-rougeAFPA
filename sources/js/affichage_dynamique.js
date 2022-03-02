@@ -43,6 +43,7 @@ function afficher_BD_random() {
         var image_card_BD = document.createElement('img');
         image_card_BD.setAttribute('class', 'img-fluid image_grid');
         image_card_BD.setAttribute('src', '../sources/albums/' + series.get(objet_album.idSerie).nom.replace(regex, "") + '-' + objet_album.numero + '-' + objet_album.titre.replace(regex, "") + '.jpg');
+        image_card_BD.addEventListener('click', afficher_infos_BD);
         document.getElementById(nb_random).appendChild(image_card_BD);
 
         var infos_card_BD = document.createElement('div');

@@ -68,8 +68,6 @@ function afficher_BD_random(tableau_category, nombre_affichage) {
         // choisir_BD_random();
 
         objet_album = albums.get(tableau_category[i].toString());
-        console.log(tableau_category[i]);
-        console.log(objet_album);
 
         //création div qui contiendra image, titre, prix et bouton infos     
         var col_card_BD = document.createElement('div');

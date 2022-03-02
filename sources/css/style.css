@@ -63,6 +63,11 @@ form {
     max-height: 218px;
 }
 
+.image_big {
+    max-height: 400px;
+    width: auto;
+}
+
 .image_panier {
     height: 50px;
     width: auto;
@@ -85,6 +90,7 @@ form {
 
 #show_bd {
     height: 80vh;
+    overflow-y: scroll;
 }
 
 #category2 {
@@ -125,10 +131,6 @@ a {
 @media screen and (min-width: 768px) {
     #random_display {
         display: inline-flex;
-    }
-    .image_big {
-        max-height: 400px;
-        width: auto;
     }
     #show_bd {
         height: 45vh;

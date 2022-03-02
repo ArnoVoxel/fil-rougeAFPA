@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div id="barre_navigation" class="w-auto row sticky-md-top">
+    <div id="barre_navigation" class="w-auto row sticky-top">
         <div class="col-2 col-md-3 p-1 nav-item">
             <a href="" class="navbar-brand"><img class="logo img-fluid" src="assets/BDDrive.svg" alt=""></a>
         </div>
@@ -77,13 +77,24 @@
     <!-- corps de page -->
     <div id="row_category" class="row">
         <!-- menu déroulant -->
-        <div id="category" class="col-12 m-2">
+        <div id="category" class="col-6">
             <div>
                 <label for="category">trier par : </label>
-                <select name="category">
+                <select class="category" name="category">
                     <option value="last">dernières sorties</option>
                     <option value="best">meilleures ventes</option>
                     <option value="classic">nos classiques</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="nombre_bd" class="col-6">
+            <div>
+                <label for="nombre_bd">éléments affichés : </label>
+                <select class="nombre_bd" name="nombre_bd">
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="12">12</option>
                 </select>
             </div>
         </div>
@@ -92,7 +103,7 @@
         <div id="category2" class="col-md-2">
             <div>
                 <label for="category">trier par : </label>
-                <select name="category">
+                <select class="category" name="category">
                     <option value="last">dernières sorties</option>
                     <option value="best">meilleures ventes</option>
                     <option value="classic">nos classiques</option>
@@ -126,6 +137,7 @@
     <script src="data/auteurs.js"></script>
     <script src="data/series.js"></script>
 
+    <script src="js/afficher_nombre_categorie.js"></script>
     <script src="js/affichage_detail.js"></script>
     <script src="js/panier.js"></script>
     <script src="js/supprimer_panier.js"></script>

@@ -65,18 +65,22 @@ function display_active_series(active_series) {
 
 // création de l'élément à apparaitre à chaque correspondance entre l'id en cours et l'id auteur
 function create_series_elements(album_key) {
+  console.log(album_key);
   var li = document.createElement("li");
   li.setAttribute("class", "card col-6 col-sm-4 col-md-3 col-xl-2");
   li.style.backgroundColor = "#F3D8CD";
   li.style.listStyle = "none";
+
   document.getElementById("list_result_series").appendChild(li);
 
   var secondary_row = document.createElement("div");
   secondary_row.setAttribute("class", "row");
+  secondary_row.setAttribute("id", album_key.id);
   li.appendChild(secondary_row);
 
   var header_col = document.createElement("div");
   header_col.setAttribute("class", "col-sm-12");
+
   secondary_row.appendChild(header_col);
 
   var col_img = document.createElement("img");

@@ -26,7 +26,7 @@
             </button>
         </div>
         <form class="col-6 col-md-3 p-1 d-flex nosubmit">
-            <input class="form-control me-2 nosubmit" type="nosubmit" placeholder="rechercher" aria-label="rechercher">
+            <input id="search_value" class="form-control me-2 nosubmit" type="nosubmit" placeholder="rechercher" aria-label="rechercher">
         </form>
         <div id="logo_utilisateur" class="col-2 col-md-3 p-1 nav-item">
             <button id="utilisateur" type="button" class="btn"><img class="logo img-fluid" src="assets/utilisateur.svg" alt=""></button>
@@ -74,6 +74,12 @@
 
     </div>
 
+    <!-- champ résultat de recherche -->
+
+    <ul id="search_results_name">
+        
+    </ul>
+
     <!-- détail BD Modal -->
     <div class="modal fade" id="bd_modal" tabindex="-1" aria-labelledby="bd_modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
@@ -96,15 +102,19 @@
     </div>
 
     <!-- corps de page -->
-    <div id="row_category" class="row">
+    <!-- id="row_category"  Arnaud-->
+
+    <div id="body_page" class="row">
         <!-- menu déroulant -->
         <div id="category" class="col-6">
             <div>
                 <label for="category">trier par : </label>
-                <select class="category" name="category">
+                <select class="category" name="category" id="mobile_selection">
                     <option value="last">dernières sorties</option>
                     <option value="best">meilleures ventes</option>
                     <option value="classic">nos classiques</option>
+                    <option value="series">series</option>
+                    <option value="authors">auteurs</option>
                 </select>
             </div>
         </div>
@@ -124,14 +134,16 @@
         <div id="category2" class="col-md-2">
             <div>
                 <label for="category">trier par : </label>
-                <select class="category" name="category">
+                <select class="category" name="category" id="desktop_selection">
                     <option value="last">dernières sorties</option>
                     <option value="best">meilleures ventes</option>
                     <option value="classic">nos classiques</option>
+                    <option value="series">series</option>
+                    <option value="authors">auteurs</option>
                 </select>
             </div>
         </div>
-        <div class="col-12 col-md-10">
+        <div class="col-12 col-md-10" id="bd_container">
             <div id="show_bd" class="row">
 
             </div>
@@ -157,6 +169,10 @@
     <script src="data/albums.js"></script>
     <script src="data/auteurs.js"></script>
     <script src="data/series.js"></script>
+    <script src="js/affichage_resultats_par_nom.js"></script>
+    <script src="js/affichage_select_auteur.js"></script>
+    <script src="js/affichage_select_series.js"></script>
+    <script src="js/search_bar.js"></script>
 
     <script src="js/afficher_nombre_categorie.js"></script>
     <script src="js/affichage_detail.js"></script>

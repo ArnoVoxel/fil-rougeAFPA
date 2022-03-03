@@ -29,6 +29,10 @@ function afficher_BD_random() {
   //le nombre pourra être modifié par l'utilisateur
   for (let i = 0; i < 4; i++) {
     choisir_BD_random();
+    var div_show_bd = document.createElement("div");
+    div_show_bd.setAttribute("id", "show_bd");
+    div_show_bd.setAttribute("class", "row");
+    document.getElementById("bd_container").appendChild(div_show_bd);
     //création div qui contiendra image, titre, prix et bouton infos
     var col_card_BD = document.createElement("div");
     col_card_BD.setAttribute("class", "col-6 col-md-3 panier_category");

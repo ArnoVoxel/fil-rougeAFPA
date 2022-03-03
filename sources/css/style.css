@@ -85,6 +85,15 @@ form {
     display: none;
 }
 
+button {
+    border-radius: 15px;
+}
+
+.bouton_panier_card>img {
+    height: 28px;
+    width: auto;
+}
+
 
 /* hauteur du pied de page pour la taille minimale */
 
@@ -120,12 +129,6 @@ a {
     #show_bd {
         height: 85vh;
     }
-    #category {
-        display: none;
-    }
-    #category2 {
-        display: block;
-    }
 }
 
 @media screen and (min-width: 768px) {
@@ -134,6 +137,15 @@ a {
     }
     #show_bd {
         height: 45vh;
+    }
+    #category {
+        display: none;
+    }
+    #category2 {
+        display: block;
+    }
+    #nombre_bd {
+        display: none;
     }
 }
 

@@ -25,7 +25,10 @@ function creer_ligne_panier() {
 
     //récupération de l'id dans la nom de div du parent
     var parent_div = this.parentNode;
+    console.log(parent_div);
     var parent_id = parent_div.id;
+    console.log(parent_id);
+
     var is_ligne = true;
 
     //contrôle si ligne existante pour ne pas l'écraser

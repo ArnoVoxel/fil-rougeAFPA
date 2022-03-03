@@ -9,6 +9,7 @@ var tableau_storage_category_best = [];
 var tableau_storage_category_classic = [];
 
 var bouton_accueil = document.getElementById('accueil');
+var bouton_panier_affichage_infos_modal = document.getElementById('ajout_panier_détail_bd');
 
 var nb_random = 0;
 
@@ -22,10 +23,12 @@ afficher_BD_random(tableau_storage_category_last, nombre_BD_category);
 
 bouton_accueil.addEventListener('click', function() {
     afficher_BD_random(tableau_storage_category_last, nombre_BD_category);
-    //réafficher la div category
-    document.getElementById('row_category').style.display = 'block';
+
+    console.log(window.screen.width);
+
 });
 
+//prendre des valeurs random existantes dans la map albums.js
 function choisir_BD_random() {
     do {
         //valeur aléatoire entre 1 et 629
@@ -38,12 +41,14 @@ function choisir_BD_random() {
     return nb_random;
 }
 
+/**
+ * créer les id en session Storage pour ne pas avoir un random à chaque retour sur l'accueil
+ * à partir des valeurs random
+ */
 function creer_session_storage() {
 
-    var id_grand = 0;
-
     choisir_BD_random();
-    id_grand = nb_random;
+    var id_grand = nb_random;
 
     for (let i = 0; i < 12; i++) {
         choisir_BD_random();
@@ -77,28 +82,46 @@ function afficher_BD_random(tableau_category, nombre_affichage) {
 
         objet_album = albums.get(tableau_category[i].toString());
 
-        //création div qui contiendra image, titre, prix et bouton infos     
-        var col_card_BD = document.createElement('div');
-        col_card_BD.setAttribute('class', 'col-6 col-md-3 panier_category');
-        col_card_BD.setAttribute('id', tableau_category[i]);
-        document.getElementById('show_bd').appendChild(col_card_BD);
+        //création cards Bootstrap
+        var card_category = document.createElement('card');
+        card_category.style = 'width : 12rem;';
+        card_category.setAttribute('class', 'col-6 col-md-3');
+        document.getElementById('show_bd').appendChild(card_category);
 
-        var image_card_BD = document.createElement('img');
-        image_card_BD.setAttribute('class', 'img-fluid image_grid');
-        image_card_BD.setAttribute('src', '../sources/albums/' + series.get(objet_album.idSerie).nom.replace(regex, "") + '-' + objet_album.numero + '-' + objet_album.titre.replace(regex, "") + '.jpg');
-        image_card_BD.addEventListener('click', afficher_infos_BD);
-        document.getElementById(tableau_category[i]).appendChild(image_card_BD);
+        var card_image = document.createElement('img');
+        card_image.setAttribute('src', '../sources/albums/' + series.get(objet_album.idSerie).nom.replace(regex, "") + '-' + objet_album.numero + '-' + objet_album.titre.replace(regex, "") + '.jpg');
+        card_image.setAttribute('class', 'card-img-top');
+        card_category.appendChild(card_image);
 
-        var infos_card_BD = document.createElement('div');
-        infos_card_BD.textContent = objet_album.titre + ', prix : ' + objet_album.prix;
-        document.getElementById(tableau_category[i]).appendChild(infos_card_BD);
+        var card_body = document.createElement('div');
+        card_body.setAttribute('class', 'card-body');
+        card_body.setAttribute('id', tableau_category[i]);
+        card_category.appendChild(card_body);
 
-        var btn_card_BD = document.createElement('button');
-        btn_card_BD.setAttribute('id', 'bouton_panier' + i);
-        btn_card_BD.textContent = "ajouter au panier";
-        btn_card_BD.addEventListener('click', creer_ligne_panier);
-        btn_card_BD.addEventListener('click', bulle_bouton_panier);
-        document.getElementById(tableau_category[i]).appendChild(btn_card_BD);
+        var card_titre_bd = document.createElement('h6');
+        card_titre_bd.setAttribute('class', 'card-title');
+        card_titre_bd.textContent = objet_album.titre;
+        card_body.appendChild(card_titre_bd);
+
+        var card_prix_bd = document.createElement('p');
+        card_prix_bd.setAttribute('class', 'card-text');
+        card_prix_bd.textContent = objet_album.prix + ' €';
+        card_body.appendChild(card_prix_bd);
+
+        var card_bouton_detail = document.createElement('button');
+        card_bouton_detail.setAttribute('class', 'btn btn-primary ');
+        card_bouton_detail.setAttribute('data-bs-toggle', 'modal');
+        card_bouton_detail.setAttribute('data-bs-target', '#bd_modal');
+        card_bouton_detail.addEventListener('click', afficher_infos_BD);
+        card_bouton_detail.textContent = 'infos';
+        card_body.appendChild(card_bouton_detail);
+
+        var card_bouton_panier = document.createElement('button');
+        card_bouton_panier.setAttribute('class', 'btn btn-primary bouton_panier_card');
+        card_bouton_panier.innerHTML = '<img class="logo img-fluid" src="assets/panier.svg" alt="">';
+        card_bouton_panier.addEventListener('click', creer_ligne_panier);
+        card_bouton_panier.addEventListener('click', bulle_bouton_panier);
+        card_body.appendChild(card_bouton_panier);
     }
 
     //afficher BD coup de coeur
@@ -109,7 +132,6 @@ function afficher_BD_random(tableau_category, nombre_affichage) {
     document.getElementById('random_display').appendChild(titre_coup_de_coeur);
 
     afficher_details_BD(sessionStorage.getItem('grand'));
-    console.log(sessionStorage.getItem('grand'));
 }
 
 /**
@@ -119,8 +141,6 @@ function afficher_details_BD(id_session_storage) {
 
     //clear la div
     document.getElementById('random_display').textContent = ' ';
-
-    console.log(id_session_storage);
 
     objet_album = albums.get(id_session_storage);
 
@@ -138,43 +158,43 @@ function afficher_details_BD(id_session_storage) {
     //container des infos BD
     var col_infos_BD_grande = document.createElement('div');
     col_infos_BD_grande.setAttribute('class', 'col-6');
-    col_infos_BD_grande.setAttribute('id', nb_random);
+    col_infos_BD_grande.setAttribute('id', id_session_storage);
     document.getElementById('random_display').appendChild(col_infos_BD_grande);
 
     var col_serie_BD_grande = document.createElement('div');
     col_serie_BD_grande.setAttribute('class', 'col-12');
     col_serie_BD_grande.textContent = 'série : ' + series.get(objet_album.idSerie).nom;
-    document.getElementById(nb_random).appendChild(col_serie_BD_grande);
+    document.getElementById(id_session_storage).appendChild(col_serie_BD_grande);
 
     var col_titre_BD_grande = document.createElement('div');
     col_titre_BD_grande.setAttribute('class', 'col-12');
     col_titre_BD_grande.textContent = 'titre : ' + objet_album.titre;
-    document.getElementById(nb_random).appendChild(col_titre_BD_grande);
+    document.getElementById(id_session_storage).appendChild(col_titre_BD_grande);
 
     var col_auteur_BD_grande = document.createElement('div');
     col_auteur_BD_grande.setAttribute('class', 'col-12');
     col_auteur_BD_grande.textContent = 'auteur : ' + auteurs.get(objet_album.idAuteur).nom;
-    document.getElementById(nb_random).appendChild(col_auteur_BD_grande);
+    document.getElementById(id_session_storage).appendChild(col_auteur_BD_grande);
 
     var col_tome_BD_grande = document.createElement('div');
     col_tome_BD_grande.setAttribute('class', 'col-12');
     col_tome_BD_grande.textContent = 'tome N° ' + objet_album.numero;
-    document.getElementById(nb_random).appendChild(col_tome_BD_grande);
+    document.getElementById(id_session_storage).appendChild(col_tome_BD_grande);
 
     var col_prix_BD_grande = document.createElement('div');
     col_prix_BD_grande.setAttribute('class', 'col-12');
     col_prix_BD_grande.textContent = 'prix : ' + objet_album.prix + '€';
-    document.getElementById(nb_random).appendChild(col_prix_BD_grande);
+    document.getElementById(id_session_storage).appendChild(col_prix_BD_grande);
 
     var col_resume_BD_grande = document.createElement('div');
     col_resume_BD_grande.setAttribute('class', 'col-12');
     col_resume_BD_grande.textContent = 'résumé : \nLorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, pariatur. Voluptate hic ut molestias voluptatum cumque dicta quam nesciunt nulla animi accusamus. Harum tempora dolores sint officiis iusto enim nam!';
-    document.getElementById(nb_random).appendChild(col_resume_BD_grande);
+    document.getElementById(id_session_storage).appendChild(col_resume_BD_grande);
 
     var col_bouton_panier_BD_grande = document.createElement('button');
     col_bouton_panier_BD_grande.setAttribute('id', 'bouton_panier_grande');
     col_bouton_panier_BD_grande.textContent = 'Ajouter au panier';
     col_bouton_panier_BD_grande.addEventListener('click', creer_ligne_panier);
     col_bouton_panier_BD_grande.addEventListener('click', bulle_bouton_panier);
-    document.getElementById(nb_random).appendChild(col_bouton_panier_BD_grande);
+    document.getElementById(id_session_storage).appendChild(col_bouton_panier_BD_grande);
 }

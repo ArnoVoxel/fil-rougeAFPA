@@ -14,7 +14,17 @@ function search_name() {
 
 
     } else if (search_value.value.replace(" ", "").length > 2) {
+        var search_number = 0;
+        
         search_results_name.textContent = "";
+
+        var p_result = document.createElement("p");
+        document.getElementById("search_results_name").appendChild(p_result);
+
+        var ul = document.createElement("ul");
+        ul.setAttribute("class", "row");
+        ul.setAttribute("id", "search_list");
+        document.getElementById("search_results_name").appendChild(ul)
 
         for (let [id, value] of albums.entries()) {
             if (
@@ -24,7 +34,11 @@ function search_name() {
                 body_page.textContent = "";
                 var objet_id = albums.get(id.toString());
                 display_search_results_name(objet_id, id.toString());
+                search_number++
             }
         }
+
+        p_result.textContent = search_number + " résultat(s) de recherche pour le terme '" + search_value.value + "'";
+        
     }
 }

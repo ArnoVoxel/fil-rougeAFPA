@@ -130,4 +130,11 @@ function create_series_elements(album_key, id_album) {
     button_infos_serie.textContent = 'infos';
     button_infos_serie.addEventListener('click', afficher_infos_BD);
     div_button_container.appendChild(button_infos_serie);
+
+    var button_panier_serie = document.createElement('button');
+    button_panier_serie.setAttribute('class', 'btn btn-primary');
+    button_panier_serie.textContent = 'ajout panier';
+    button_panier_serie.addEventListener('click', creer_ligne_panier);
+    button_panier_serie.addEventListener('click', bulle_bouton_panier);
+    div_button_container.appendChild(button_panier_serie);
 }

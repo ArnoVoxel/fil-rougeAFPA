@@ -110,4 +110,24 @@ function create_authors_elements(album_key, id_album) {
     var price = document.createElement("p");
     price.textContent = album_key.prix + "€";
     col_description.appendChild(price);
+
+    var div_button_container = document.createElement('div');
+    div_button_container.setAttribute('class', 'col-12');
+    div_button_container.setAttribute("id", id_album);
+    secondary_row.appendChild(div_button_container);
+
+    var button_infos_serie = document.createElement('button');
+    button_infos_serie.setAttribute('class', 'btn btn-primary');
+    button_infos_serie.setAttribute('data-bs-toggle', 'modal');
+    button_infos_serie.setAttribute('data-bs-target', '#bd_modal');
+    button_infos_serie.textContent = 'infos';
+    button_infos_serie.addEventListener('click', afficher_infos_BD);
+    div_button_container.appendChild(button_infos_serie);
+
+    var button_panier_serie = document.createElement('button');
+    button_panier_serie.setAttribute('class', 'btn btn-primary');
+    button_panier_serie.textContent = 'ajout panier';
+    button_panier_serie.addEventListener('click', creer_ligne_panier);
+    button_panier_serie.addEventListener('click', bulle_bouton_panier);
+    div_button_container.appendChild(button_panier_serie);
 }

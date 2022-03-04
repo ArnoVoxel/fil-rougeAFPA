@@ -9,11 +9,11 @@ search_value.addEventListener("keyup", search_name);
 
 // Fonction de recherche
 function search_name() {
-    if (search_value.value.length == 0) {
+    if (this.value.length == 0) {
         search_results_name.textContent = "Pas de résultats";
 
 
-    } else if (search_value.value.replace(" ", "").length > 2) {
+    } else if (this.value.replace(" ", "").length > 2) {
         var search_number = 0;
         
         search_results_name.textContent = "";
@@ -28,7 +28,7 @@ function search_name() {
 
         for (let [id, value] of albums.entries()) {
             if (
-                value.titre.toLowerCase().includes(search_value.value.toLowerCase())
+                value.titre.toLowerCase().includes(this.value.toLowerCase())
             ) {
                 random_display.textContent = "";
                 body_page.textContent = "";
@@ -38,7 +38,7 @@ function search_name() {
             }
         }
 
-        p_result.textContent = search_number + " résultat(s) de recherche pour le terme '" + search_value.value + "'";
+        p_result.textContent = search_number + " résultat(s) pour le terme '" + this.value + "'";
         
     }
 }

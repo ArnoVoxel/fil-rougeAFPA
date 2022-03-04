@@ -25,8 +25,6 @@ afficher_BD_random(tableau_storage_category_last, nombre_BD_category);
 
 bouton_accueil.addEventListener('click', function() {
 
-    document.getElementById('bd_container').textContent = '';
-    document.getElementById('body_page').textContent = '';
     creer_liste_tri();
     creer_liste_nombre_affichage();
     afficher_BD_random(tableau_storage_category_last, nombre_BD_category);

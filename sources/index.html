@@ -31,7 +31,7 @@
             <input id="search_value" class="form-control me-2 nosubmit" type="nosubmit" placeholder="rechercher" aria-label="rechercher">
         </form>
         <div id="logo_utilisateur" class="col-2 col-md-3 p-1 nav-item">
-            <button id="utilisateur" type="button" class="btn"><img class="logo img-fluid" src="assets/utilisateur.svg" alt=""></button>
+            <button id="utilisateur" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#connexion_modal"><img class="logo img-fluid" src="assets/utilisateur.svg" alt=""></button>
         </div>
     </div>
 
@@ -93,6 +93,26 @@
                 <div class="modal-body">
                     <div id="infos_bd_modal" class="row">
 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Log in -->
+    <div class="modal fade" id="connexion_modal" tabindex="-1" aria-labelledby="connexion_modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titre_connexion_modal">connectez-vous </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="infos_connexion_modal" class="row">
+                        <label for="identifiant">identifiant</label>
+                        <input type="text" name="identifiant">
+                        <label for="password">mot de passe</label>
+                        <input type="password" name="password" id="password">
                     </div>
                 </div>
             </div>

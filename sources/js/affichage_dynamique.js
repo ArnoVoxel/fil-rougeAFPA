@@ -29,8 +29,6 @@ bouton_accueil.addEventListener('click', function() {
     creer_liste_nombre_affichage();
     afficher_BD_random(tableau_storage_category_last, nombre_BD_category);
 
-    console.log(window.screen.width);
-
 });
 
 //prendre des valeurs random existantes dans la map albums.js
@@ -136,7 +134,7 @@ function afficher_BD_random(tableau_category, nombre_affichage) {
         card_body.appendChild(card_prix_bd);
 
         var card_bouton_detail = document.createElement('button');
-        card_bouton_detail.setAttribute('class', 'btn btn-primary ');
+        card_bouton_detail.setAttribute('class', 'btn');
         card_bouton_detail.setAttribute('data-bs-toggle', 'modal');
         card_bouton_detail.setAttribute('data-bs-target', '#bd_modal');
         card_bouton_detail.addEventListener('click', afficher_infos_BD);
@@ -295,7 +293,7 @@ function creer_liste_tri() {
     select_category2.setAttribute('class', 'category');
     select_category2.setAttribute('name', 'category2');
     select_category2.setAttribute('id', 'desktop_selection');
-    // select_category2.addEventListener('change', affichage_contenu_category);
+    select_category2.addEventListener('change', affichage_contenu_category);
     select_category2.addEventListener('change', display_authors);
     select_category2.addEventListener('change', display_series);
     div_category2_container.appendChild(select_category2);

@@ -24,7 +24,7 @@ body {
 #footer {
     background-color: #273c75;
     color: #c23616;
-    height: 80px;
+    height: 90px;
 }
 
 #bulle_notification {
@@ -53,6 +53,11 @@ input.nosubmit {
 
 #random_display {
     display: none;
+}
+
+.btn {
+    color: white;
+    background-color: #273c75;
 }
 
 form {

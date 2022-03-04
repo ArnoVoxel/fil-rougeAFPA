@@ -57,7 +57,6 @@ function creation_elements_BD_grande(id_BD) {
     auteur_prix_bd_modal.appendChild(prix_bd_modal);
     document.getElementById("infos_bd_modal").appendChild(block_resume_bd_modal);
 
-    console.log(id_BD);
 
     var footer_detail_bd_modal = document.createElement("div");
     footer_detail_bd_modal.setAttribute("class", "modal-footer");

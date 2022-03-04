@@ -2,9 +2,7 @@
 
 function display_series(e) {
     // condition qui vérifie le clique sur séries
-    console.log(e.target.value);
     if (e.target.value === "series") {
-        console.log('dedans');
         // vide le contenu de bd_container
 
         // document.getElementById('bd_container').textContent = "";

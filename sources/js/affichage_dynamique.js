@@ -71,8 +71,23 @@ function creer_session_storage() {
  */
 function afficher_BD_random(tableau_category, nombre_affichage) {
 
+    document.getElementById('search_results_name').textContent = '';
+
+    //créer les éléments en dynamique pour revenir à l'affichage accueil après une recherche
+    var div_container_affichage_accueil = document.createElement('div');
+    div_container_affichage_accueil.setAttribute('class', 'col-12 col-md-10');
+    div_container_affichage_accueil.setAttribute('id', 'bd_container');
+    document.getElementById('body_page').appendChild(div_container_affichage_accueil);
+
+    var div_row_show_bd = document.createElement('div');
+    div_row_show_bd.setAttribute('class', 'row');
+    div_row_show_bd.setAttribute('id', 'show_bd');
+    div_container_affichage_accueil.appendChild(div_row_show_bd);
+
+
     //vider la div
     document.getElementById('show_bd').textContent = ' ';
+    //document.getElementById('body_page').textContent = ' ';
 
     //boucle qui crée le nombre de BD dans la partie category
     //le nombre pourra être modifié par l'utilisateur

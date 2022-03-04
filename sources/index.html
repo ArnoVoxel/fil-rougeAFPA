@@ -31,7 +31,7 @@
             <input id="search_value" class="form-control me-2 nosubmit" type="nosubmit" placeholder="rechercher" aria-label="rechercher">
         </form>
         <div id="logo_utilisateur" class="col-2 col-md-3 p-1 nav-item">
-            <button id="utilisateur" type="button" class="btn"><img class="logo img-fluid" src="assets/utilisateur.svg" alt=""></button>
+            <button id="utilisateur" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#connexion_modal"><img class="logo img-fluid" src="assets/utilisateur.svg" alt=""></button>
         </div>
     </div>
 
@@ -95,59 +95,35 @@
 
                     </div>
                 </div>
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button id="ajout_panier_détail_bd" type="button" class="btn btn-primary">Ajouter au panier</button>
-                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Log in -->
+    <div class="modal fade" id="connexion_modal" tabindex="-1" aria-labelledby="connexion_modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titre_connexion_modal">connectez-vous </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="infos_connexion_modal" class="row">
+                        <label for="identifiant">identifiant</label>
+                        <input type="text" name="identifiant">
+                        <label for="password">mot de passe</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- corps de page -->
-    <!-- id="row_category"  Arnaud-->
-
     <div id="body_page" class="row">
-        <!-- menu déroulant -->
-        <div id="category" class="col-6">
-            <div>
-                <label for="category">trier par : </label>
-                <select class="category" name="category" id="mobile_selection">
-                    <option value="last">dernières sorties</option>
-                    <option value="best">meilleures ventes</option>
-                    <option value="classic">nos classiques</option>
-                    <option value="series">series</option>
-                    <option value="authors">auteurs</option>
-                </select>
-            </div>
-        </div>
-
-        <div id="nombre_bd" class="col-6">
-            <div>
-                <label for="nombre_bd">éléments affichés : </label>
-                <select class="nombre_bd" name="nombre_bd">
-                    <option value="4">4</option>
-                    <option value="8">8</option>
-                    <option value="12">12</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- affichage des BD -->
-        <div id="category2" class="col-md-2">
-            <div>
-                <label for="category">trier par : </label>
-                <select class="category" name="category" id="desktop_selection">
-                    <option value="last">dernières sorties</option>
-                    <option value="best">meilleures ventes</option>
-                    <option value="classic">nos classiques</option>
-                    <option value="series">series</option>
-                    <option value="authors">auteurs</option>
-                </select>
-            </div>
-        </div>
 
     </div>
-    </div>
+
 
     <!-- footer -->
     <div id="footer" class="row">
@@ -178,7 +154,6 @@
     <script src="js/supprimer_panier.js"></script>
     <script src="js/affichage_dynamique.js"></script>
     <script src="js/affichage_panier.js"></script>
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

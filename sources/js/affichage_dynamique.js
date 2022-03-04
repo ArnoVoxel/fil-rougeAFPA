@@ -10,6 +10,7 @@ var tableau_storage_category_classic = [];
 
 var bouton_accueil = document.getElementById('accueil');
 var bouton_panier_affichage_infos_modal = document.getElementById('ajout_panier_détail_bd');
+var bouton_utilisateur = document.getElementById('utilisateur');
 
 var nb_random = 0;
 
@@ -17,14 +18,23 @@ var nb_random = 0;
 //RegEx pour les supprimer dans la concaténation
 const regex = /['!?.":$]/g;
 
+
+//pour affichage à l'arrivée sur la page
 creer_session_storage();
 
+creer_liste_tri();
+creer_liste_nombre_affichage();
 afficher_BD_random(tableau_storage_category_last, nombre_BD_category);
 
 bouton_accueil.addEventListener('click', function() {
+
+    creer_liste_tri();
+    creer_liste_nombre_affichage();
     afficher_BD_random(tableau_storage_category_last, nombre_BD_category);
 
-    console.log(window.screen.width);
+});
+
+bouton_utilisateur.addEventListener('click', function() {
 
 });
 
@@ -63,6 +73,8 @@ function creer_session_storage() {
     sessionStorage.setItem('last', '[' + tableau_storage_category_last + ']');
     sessionStorage.setItem('best', '[' + tableau_storage_category_best + ']');
     sessionStorage.setItem('classic', '[' + tableau_storage_category_classic + ']');
+    sessionStorage.setItem('series', 'séries');
+    sessionStorage.setItem('authors', 'auteurs');
 
 }
 
@@ -72,6 +84,10 @@ function creer_session_storage() {
 function afficher_BD_random(tableau_category, nombre_affichage) {
 
     document.getElementById('search_results_name').textContent = '';
+    document.getElementById('body_page').textContent = '';
+
+    creer_liste_tri();
+    creer_liste_nombre_affichage();
 
     //créer les éléments en dynamique pour revenir à l'affichage accueil après une recherche
     var div_container_affichage_accueil = document.createElement('div');
@@ -93,13 +109,14 @@ function afficher_BD_random(tableau_category, nombre_affichage) {
     //le nombre pourra être modifié par l'utilisateur
     for (let i = 0; i < nombre_affichage; i++) {
 
-        // choisir_BD_random();
-
         objet_album = albums.get(tableau_category[i].toString());
 
         //création cards Bootstrap
         var card_category = document.createElement('card');
         card_category.style = 'width : 12rem;';
+        card_category.style.backgroundColor = "#F3D8CD";
+        card_category.style.padding = "1vh";
+        card_category.style.margin = "1vh";
         card_category.setAttribute('class', 'col-6 col-md-3');
         document.getElementById('show_bd').appendChild(card_category);
 
@@ -124,7 +141,7 @@ function afficher_BD_random(tableau_category, nombre_affichage) {
         card_body.appendChild(card_prix_bd);
 
         var card_bouton_detail = document.createElement('button');
-        card_bouton_detail.setAttribute('class', 'btn btn-primary ');
+        card_bouton_detail.setAttribute('class', 'btn');
         card_bouton_detail.setAttribute('data-bs-toggle', 'modal');
         card_bouton_detail.setAttribute('data-bs-target', '#bd_modal');
         card_bouton_detail.addEventListener('click', afficher_infos_BD);
@@ -212,4 +229,141 @@ function afficher_details_BD(id_session_storage) {
     col_bouton_panier_BD_grande.addEventListener('click', creer_ligne_panier);
     col_bouton_panier_BD_grande.addEventListener('click', bulle_bouton_panier);
     document.getElementById(id_session_storage).appendChild(col_bouton_panier_BD_grande);
+}
+
+/**
+ * création des listes (menu déroulant) de tri en dynamique
+ */
+function creer_liste_tri() {
+    //container du menu déroulant
+    var div_category_container = document.createElement('div');
+    div_category_container.setAttribute('id', 'category');
+    div_category_container.setAttribute('class', 'col-6');
+    document.getElementById('body_page').appendChild(div_category_container);
+
+
+    var label_category = document.createElement('label');
+    label_category.setAttribute('for', 'category');
+    label_category.textContent = 'trier par : ';
+    div_category_container.appendChild(label_category);
+
+    var select_category = document.createElement('select');
+    select_category.setAttribute('class', 'category');
+    select_category.setAttribute('name', 'category');
+    select_category.setAttribute('id', 'mobile_selection');
+
+    //abonnements du select
+    select_category.addEventListener('change', affichage_contenu_category);
+    select_category.addEventListener('change', display_series);
+    select_category.addEventListener('change', display_authors);
+
+
+    div_category_container.appendChild(select_category);
+
+    var option1_category = document.createElement('option');
+    option1_category.setAttribute('value', 'last');
+    option1_category.textContent = 'dernières sorties';
+    select_category.appendChild(option1_category);
+
+    var option2_category = document.createElement('option');
+    option2_category.setAttribute('value', 'best');
+    option2_category.textContent = 'meilleures ventes';
+    select_category.appendChild(option2_category);
+
+    var option3_category = document.createElement('option');
+    option3_category.setAttribute('value', 'classic');
+    option3_category.textContent = 'nos classiques';
+    select_category.appendChild(option3_category);
+
+    var option4_category = document.createElement('option');
+    option4_category.setAttribute('value', 'series');
+    option4_category.textContent = 'series';
+    select_category.appendChild(option4_category);
+
+    var option5_category = document.createElement('option');
+    option5_category.setAttribute('value', 'authors');
+    option5_category.textContent = 'auteurs';
+    select_category.appendChild(option5_category);
+
+    //liste déroulante pour affichage desktop
+    var div_category2_container = document.createElement('div');
+    div_category2_container.setAttribute('id', 'category2');
+    div_category2_container.setAttribute('class', 'col-6');
+    document.getElementById('body_page').appendChild(div_category2_container);
+
+    var label_category2 = document.createElement('label');
+    label_category2.setAttribute('for', 'category2');
+    label_category2.textContent = 'trier par : ';
+    div_category2_container.appendChild(label_category2);
+
+    var select_category2 = document.createElement('select');
+    select_category2.setAttribute('class', 'category');
+    select_category2.setAttribute('name', 'category2');
+    select_category2.setAttribute('id', 'desktop_selection');
+    select_category2.addEventListener('change', affichage_contenu_category);
+    select_category2.addEventListener('change', display_authors);
+    select_category2.addEventListener('change', display_series);
+    div_category2_container.appendChild(select_category2);
+
+    var option1_category2 = document.createElement('option');
+    option1_category2.setAttribute('value', 'last');
+    option1_category2.textContent = 'dernières sorties';
+    select_category2.appendChild(option1_category2);
+
+    var option2_category2 = document.createElement('option');
+    option2_category2.setAttribute('value', 'best');
+    option2_category2.textContent = 'meilleures ventes';
+    select_category2.appendChild(option2_category2);
+
+    var option3_category2 = document.createElement('option');
+    option3_category2.setAttribute('value', 'classic');
+    option3_category2.textContent = 'nos classiques';
+    select_category2.appendChild(option3_category2);
+
+    var option4_category2 = document.createElement('option');
+    option4_category2.setAttribute('value', 'series');
+    option4_category2.textContent = 'series';
+    select_category2.appendChild(option4_category2);
+
+    var option5_category2 = document.createElement('option');
+    option5_category2.setAttribute('value', 'authors');
+    option5_category2.textContent = 'auteurs';
+    select_category2.appendChild(option5_category2);
+}
+
+/**
+ * création de la liste déroulante pour afficher len ombre d'éléments en mobile
+ */
+function creer_liste_nombre_affichage() {
+
+    var div_nombre_container = document.createElement('div');
+    div_nombre_container.setAttribute('id', 'nombre_bd');
+    div_nombre_container.setAttribute('class', 'col-6');
+    document.getElementById('body_page').appendChild(div_nombre_container);
+
+    var label_nombre_affichage = document.createElement('label');
+    label_nombre_affichage.setAttribute('for', 'nombre_bd');
+    label_nombre_affichage.textContent = 'éléments affichés : ';
+    div_nombre_container.appendChild(label_nombre_affichage);
+
+    var select_nombre = document.createElement('select');
+    select_nombre.setAttribute('class', 'nombre_bd');
+    select_nombre.setAttribute('name', 'nombre_bd');
+    select_nombre.addEventListener('change', affichage_elements_category);
+    div_nombre_container.appendChild(select_nombre);
+
+    var option1_nombre = document.createElement('option');
+    option1_nombre.setAttribute('value', '4');
+    option1_nombre.textContent = '4';
+    select_nombre.appendChild(option1_nombre);
+
+    var option2_nombre = document.createElement('option');
+    option2_nombre.setAttribute('value', '8');
+    option2_nombre.textContent = '8';
+    select_nombre.appendChild(option2_nombre);
+
+    var option3_nombre = document.createElement('option');
+    option3_nombre.setAttribute('value', '12');
+    option3_nombre.textContent = '12';
+    select_nombre.appendChild(option3_nombre);
 }

@@ -1,7 +1,7 @@
 mobile_selection.addEventListener("change", display_series);
 
 function display_series() {
-  // condition qui vérifie le clique sur auteurs
+  // condition qui vérifie le clique sur séries
   if (mobile_selection.value === "series") {
     // vide le contenu de bd_container
     bd_container.textContent = "";
@@ -14,16 +14,15 @@ function display_series() {
     // ul.style.overflow-y = "scroll";
     bd_container.appendChild(ul);
 
-    // boucle sur la map auteur
+    // boucle sur la map series
     for (let [id_series, value] of series.entries()) {
       // création dynamique de tous les éléments de la map auteur
       var li = document.createElement("li");
       li.setAttribute("id", id_series);
-      li.setAttribute("class", "card_author");
-      li.style.border = "1px solid black";
+      li.setAttribute("class", "card p-2 col-12 col-sm-6 col-md-4 col-lg-3");
+      li.style.backgroundColor = "#F3D8CD";
       li.style.padding = "1vh";
-      li.style.borderRadius = "15px";
-      li.style.margin = "1vh";
+      
       li.style.listStyle = "none";
       li.textContent = value.nom;
       ul.appendChild(li);
@@ -33,7 +32,7 @@ function display_series() {
   }
 }
 
-// compare l'id en cours avec l'idAuteur de album
+// compare l'id en cours avec l'idSérie de album
 function check_series_id() {
   var results_number = 0;
   var active_series = this.textContent;
@@ -63,7 +62,7 @@ function display_active_series(active_series) {
   document.getElementById("list_result_series").appendChild(serie_name);
 }
 
-// création de l'élément à apparaitre à chaque correspondance entre l'id en cours et l'id auteur
+// création de l'élément à apparaitre à chaque correspondance entre l'id en cours et l'id série
 function create_series_elements(album_key) {
   console.log(album_key);
   var li = document.createElement("li");
@@ -79,11 +78,12 @@ function create_series_elements(album_key) {
   li.appendChild(secondary_row);
 
   var header_col = document.createElement("div");
-  header_col.setAttribute("class", "col-sm-12");
+  header_col.setAttribute("class", "col-12");
 
   secondary_row.appendChild(header_col);
 
   var col_img = document.createElement("img");
+  col_img.setAttribute("class", "card-img-top")
   col_img.setAttribute(
     "src",
     "../sources/albumsMini/" +
@@ -97,7 +97,7 @@ function create_series_elements(album_key) {
   header_col.appendChild(col_img);
 
   var col_description = document.createElement("div");
-  col_description.setAttribute("class", "col-sm-12");
+  col_description.setAttribute("class", "col-12");
   secondary_row.appendChild(col_description);
 
   var title = document.createElement("p");

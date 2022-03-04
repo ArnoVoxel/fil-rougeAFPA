@@ -12,9 +12,11 @@ function search_name() {
   console.log(search_value.value.length);
   if (search_value.value.length == 0) {
     search_results_name.textContent = "Pas de résultats";
+    
+
   } else if (search_value.value.replace(" ", "").length > 2) {
     search_results_name.textContent = "";
-    search_results_name.style.display = "block";
+    
     for (let [id, value] of albums.entries()) {
       if (
         value.titre.toLowerCase().includes(search_value.value.toLowerCase())

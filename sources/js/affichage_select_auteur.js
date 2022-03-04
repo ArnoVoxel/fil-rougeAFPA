@@ -25,13 +25,9 @@ function display_authors() {
       // création dynamique de tous les éléments de la map auteur
       var li = document.createElement("li");
       li.setAttribute("id", id_authors);
-      li.setAttribute("class", "card_author");
-      li.style.border = "1px solid black";
-      li.style.padding = "1vh";
-      li.style.borderRadius = "15px";
-      li.style.margin = "1vh";
+      li.setAttribute("class", "card p-2 col-12 col-sm-6 col-md-4 col-lg-3");
+      li.style.backgroundColor = "#F3D8CD";
       li.style.listStyle = "none";
-
       li.textContent = value.nom;
       ul.appendChild(li);
       li.addEventListener("click", check_authors_id);
@@ -71,8 +67,10 @@ function display_active_author(active_author) {
 
 // création de l'élément à apparaitre à chaque correspondance entre l'id en cours et l'id auteur
 function create_authors_elements(album_key) {
+  console.log(album_key);
   var li = document.createElement("li");
   li.setAttribute("class", "card col-6 col-sm-4 col-md-3 col-xl-2");
+  li.style.backgroundColor = "#F3D8CD";
   li.style.listStyle = "none";
   document.getElementById("list_result_authors").appendChild(li);
 
@@ -81,10 +79,11 @@ function create_authors_elements(album_key) {
   li.appendChild(secondary_row);
 
   var header_col = document.createElement("div");
-  header_col.setAttribute("class", "col-sm-12");
+  header_col.setAttribute("class", "col-12");
   secondary_row.appendChild(header_col);
 
   var col_img = document.createElement("img");
+  col_img.setAttribute("class", "card-img-top")
   col_img.setAttribute(
     "src",
     "../sources/albumsMini/" +
@@ -98,13 +97,13 @@ function create_authors_elements(album_key) {
   header_col.appendChild(col_img);
 
   var col_description = document.createElement("div");
-  col_description.setAttribute("class", "col-sm-12");
+  col_description.setAttribute("class", "col-12");
   secondary_row.appendChild(col_description);
 
   var title = document.createElement("p");
   title.textContent = album_key.titre;
   col_description.appendChild(title);
-
+  
   var price = document.createElement("p");
   price.textContent = album_key.prix + "€";
   col_description.appendChild(price);

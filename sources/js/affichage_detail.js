@@ -76,6 +76,8 @@ function creation_elements_BD_grande(id_BD) {
     bouton_panier_infos_modal.setAttribute("id", "ajout_panier_détail_bd");
     bouton_panier_infos_modal.setAttribute("type", "button");
     bouton_panier_infos_modal.setAttribute("class", "btn btn-secondary");
+    bouton_panier_infos_modal.setAttribute('data-bs-toggle', 'modal');
+    bouton_panier_infos_modal.setAttribute('data-bs-target', '#confirmation_ajout');
     bouton_panier_infos_modal.textContent = "Ajouter au panier";
     bouton_panier_infos_modal.addEventListener("click", creer_ligne_panier);
     bouton_panier_infos_modal.addEventListener("click", bulle_bouton_panier);

@@ -147,18 +147,62 @@
 
     <!-- footer -->
     <div id="footer" class="row">
-        <div class="col-6">
+        <div class="col-6 infos_web">
 
-            <a href="#">qui sommes-nous</a>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#nous">qui sommes-nous</a>
             <br>
-            <a href="#">contactez-nous</a>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#contact">contactez-nous</a>
         </div>
-        <div class="col-6">
+        <div class="col-6 adresse">
             BDDrive
             <br> 20049 rue de la Certification
             <br> 14000 CAEN
         </div>
     </div>
+
+    <!-- Modal infos dev -->
+    <div class="modal fade" id="nous" tabindex="-1" aria-labelledby="nous" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titre_nous">Qui sommes-nous ? </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="infos_nous" class="row">
+                        <div class="col-6">HUGO GERARD</div>
+                        <div class="col-6">ARNAUD DEGENETAIS</div>
+                        <div class="col-6">précision et perfectionnisme</div>
+                        <div class="col-6">le génie à l'état brut</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal contact -->
+    <div class="modal fade" id="contact" tabindex="-1" aria-labelledby="contact" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titre_contact">Contactez-nous </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="infos_contact" class="row">
+                        fonction non implantée pour le moment
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="data/albums.js"></script>
     <script src="data/auteurs.js"></script>

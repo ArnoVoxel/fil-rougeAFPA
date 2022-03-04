@@ -1,10 +1,15 @@
 /**
  * afficher le nombre d'éléments avec le select
+ * @param {valeur du menu déroulant} e 
  */
 function affichage_elements_category(e) {
     afficher_BD_random(JSON.parse(sessionStorage.getItem('last')), e.target.value);
 }
 
+/**
+ * 
+ * @param {valeur du menu déroulant} e 
+ */
 function affichage_contenu_category(e) {
     document.getElementById('body_page').textContent = '';
     creer_liste_tri();

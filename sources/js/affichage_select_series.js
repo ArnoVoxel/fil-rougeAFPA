@@ -54,7 +54,7 @@ function check_series_id() {
     for (let [id_album, value] of albums.entries()) {
         if (this.id === value.idSerie) {
             var objet_id = albums.get(id_album.toString());
-            create_series_elements(objet_id);
+            create_series_elements(objet_id, id_album.toString());
             results_number++;
         }
     }
@@ -74,8 +74,8 @@ function display_active_series(active_series) {
 }
 
 // création de l'élément à apparaitre à chaque correspondance entre l'id en cours et l'id série
-function create_series_elements(album_key) {
-    console.log(album_key);
+function create_series_elements(album_key, id_album) {
+
     var li = document.createElement("li");
     li.setAttribute("class", "card col-6 col-sm-4 col-md-3 col-xl-2");
     li.style.backgroundColor = "#F3D8CD";
@@ -85,7 +85,7 @@ function create_series_elements(album_key) {
 
     var secondary_row = document.createElement("div");
     secondary_row.setAttribute("class", "row");
-    secondary_row.setAttribute("id", album_key.id);
+    secondary_row.setAttribute("id", id_album);
     li.appendChild(secondary_row);
 
     var header_col = document.createElement("div");

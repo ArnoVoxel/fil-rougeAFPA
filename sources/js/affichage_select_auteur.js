@@ -48,7 +48,7 @@ function check_authors_id() {
     for (let [id, value] of albums.entries()) {
         if (this.id === value.idAuteur) {
             var objet_id = albums.get(id.toString());
-            create_authors_elements(objet_id);
+            create_authors_elements(objet_id, id.toString());
             results_number++;
         }
     }
@@ -68,7 +68,7 @@ function display_active_author(active_author) {
 }
 
 // création de l'élément à apparaitre à chaque correspondance entre l'id en cours et l'id auteur
-function create_authors_elements(album_key) {
+function create_authors_elements(album_key, id_album) {
     console.log(album_key);
     var li = document.createElement("li");
     li.setAttribute("class", "card col-6 col-sm-4 col-md-3 col-xl-2");
@@ -78,6 +78,7 @@ function create_authors_elements(album_key) {
 
     var secondary_row = document.createElement("div");
     secondary_row.setAttribute("class", "row");
+    secondary_row.setAttribute('id', id_album);
     li.appendChild(secondary_row);
 
     var header_col = document.createElement("div");

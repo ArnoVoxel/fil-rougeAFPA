@@ -27,6 +27,15 @@ body {
     height: 90px;
 }
 
+.infos_web {
+    padding: 15px;
+}
+
+.adresse {
+    padding-top: 10px;
+    font-size: small;
+}
+
 #bulle_notification {
     visibility: hidden;
 }

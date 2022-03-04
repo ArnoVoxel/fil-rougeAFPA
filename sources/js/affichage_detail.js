@@ -36,9 +36,11 @@ function creation_elements_BD_grande(id_BD) {
     var block_resume_bd_modal = document.createElement("div");
     block_resume_bd_modal.setAttribute("class", "col-6");
     var titre_resume_bd_modal = document.createElement("div");
+    titre_resume_bd_modal.setAttribute('class', 'resume_police');
     titre_resume_bd_modal.textContent = "RESUME : ";
     block_resume_bd_modal.appendChild(titre_resume_bd_modal);
     var resume_bd_modal = document.createElement("p");
+    resume_bd_modal.setAttribute('class', 'resume_police');
     resume_bd_modal.textContent =
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, pariatur. Voluptate hic ut molestias voluptatum cumque dicta quam nesciunt nulla animi accusamus. Harum tempora dolores sint officiis iusto enim nam!";
     block_resume_bd_modal.appendChild(resume_bd_modal);

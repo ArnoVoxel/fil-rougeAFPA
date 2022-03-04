@@ -219,8 +219,8 @@ function afficher_details_BD(id_session_storage) {
     document.getElementById(id_session_storage).appendChild(col_prix_BD_grande);
 
     var col_resume_BD_grande = document.createElement('div');
-    col_resume_BD_grande.setAttribute('class', 'col-12');
-    col_resume_BD_grande.textContent = 'résumé : \nLorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, pariatur. Voluptate hic ut molestias voluptatum cumque dicta quam nesciunt nulla animi accusamus. Harum tempora dolores sint officiis iusto enim nam!';
+    col_resume_BD_grande.setAttribute('class', 'col-12 resume_police');
+    col_resume_BD_grande.textContent = 'RESUME : \nLorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, pariatur. Voluptate hic ut molestias voluptatum cumque dicta quam nesciunt nulla animi accusamus. Harum tempora dolores sint officiis iusto enim nam!';
     document.getElementById(id_session_storage).appendChild(col_resume_BD_grande);
 
     var col_bouton_panier_BD_grande = document.createElement('button');

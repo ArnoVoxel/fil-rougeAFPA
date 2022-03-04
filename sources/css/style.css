@@ -102,6 +102,15 @@ button {
     font-family: 'Comic Sans MS';
 }
 
+.sous_total {
+    padding: 0;
+}
+
+.bouton_supprimer {
+    height: 20px;
+    width: 20px;
+}
+
 
 /* hauteur du pied de page pour la taille minimale */
 

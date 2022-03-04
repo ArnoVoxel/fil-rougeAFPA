@@ -24,25 +24,34 @@ function creer_element_html_panier(objet_album, indice_local_storage) {
     var element_album = albums.get(id_album_local_storage.toString());
     var ligne_affichage_panier = document.getElementById('contenu_panier');
 
+    //div pour meilleur responsive (avant append dans ligne_affichage_panier au lieu de div_container_ligne_panier)
+    var div_container_ligne_panier = document.createElement('div');
+    div_container_ligne_panier.setAttribute('class', 'col-12');
+    ligne_affichage_panier.appendChild(div_container_ligne_panier);
+
+    var row_container_ligne_panier = document.createElement('div');
+    row_container_ligne_panier.setAttribute('class', 'row mb-2');
+    div_container_ligne_panier.appendChild(row_container_ligne_panier);
+
     var image_panier = document.createElement('img');
     image_panier.setAttribute('class', 'col-2 image_panier');
     image_panier.setAttribute('src', '../sources/albums/' + series.get(element_album.idSerie).nom.replace(regex, "") + '-' + element_album.numero + '-' + element_album.titre.replace(regex, "") + '.jpg');
-    ligne_affichage_panier.appendChild(image_panier);
+    row_container_ligne_panier.appendChild(image_panier);
 
     var titre_panier = document.createElement('div');
     titre_panier.setAttribute('class', 'col-4');
     titre_panier.textContent = element_album.titre;
-    ligne_affichage_panier.appendChild(titre_panier);
+    row_container_ligne_panier.appendChild(titre_panier);
 
     var prix_panier = document.createElement('div');
     prix_panier.setAttribute('class', 'col-2');
     prix_panier.textContent = element_album.prix + ' €';
-    ligne_affichage_panier.appendChild(prix_panier);
+    row_container_ligne_panier.appendChild(prix_panier);
 
     //container pour la quantité et ses boutons
     var quantite_container_panier = document.createElement('div');
     quantite_container_panier.setAttribute('class', 'col-2');
-    ligne_affichage_panier.appendChild(quantite_container_panier);
+    row_container_ligne_panier.appendChild(quantite_container_panier);
 
     var quantite_row_panier = document.createElement('div');
     quantite_row_panier.setAttribute('class', 'row');
@@ -73,23 +82,23 @@ function creer_element_html_panier(objet_album, indice_local_storage) {
 
     var sous_total_container_panier = document.createElement('div');
     sous_total_container_panier.setAttribute('class', 'col-2');
-    ligne_affichage_panier.appendChild(sous_total_container_panier);
+    row_container_ligne_panier.appendChild(sous_total_container_panier);
 
     var sous_total_panier = document.createElement('div');
     sous_total_panier.setAttribute('class', 'row');
     sous_total_container_panier.appendChild(sous_total_panier);
 
     var sous_total_valeur_panier = document.createElement('div');
-    sous_total_valeur_panier.setAttribute('class', 'col-6 me-1');
+    sous_total_valeur_panier.setAttribute('class', 'col-12 sous_total');
     sous_total_valeur_panier.setAttribute('id', 'sous_total' + indice_local_storage);
     sous_total_valeur_panier.textContent = (element_album.prix * objet_album.quantite).toFixed(2) + ' €';
     sous_total_panier.appendChild(sous_total_valeur_panier);
 
     //bouton supprimer
     var bouton_supprimer = document.createElement('button');
-    bouton_supprimer.setAttribute('class', 'col-2');
+    bouton_supprimer.setAttribute('class', 'col-12 ms-5 bouton_supprimer');
     bouton_supprimer.setAttribute('id', 'X' + indice_local_storage);
     bouton_supprimer.addEventListener('click', supprimer_ligne_panier);
-    bouton_supprimer.textContent = 'X';
+    bouton_supprimer.textContent = 'x';
     sous_total_panier.appendChild(bouton_supprimer);
 }

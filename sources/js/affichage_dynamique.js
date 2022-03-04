@@ -10,6 +10,7 @@ var tableau_storage_category_classic = [];
 
 var bouton_accueil = document.getElementById('accueil');
 var bouton_panier_affichage_infos_modal = document.getElementById('ajout_panier_détail_bd');
+var bouton_utilisateur = document.getElementById('utilisateur');
 
 var nb_random = 0;
 
@@ -17,6 +18,8 @@ var nb_random = 0;
 //RegEx pour les supprimer dans la concaténation
 const regex = /['!?.":$]/g;
 
+
+//pour affichage à l'arrivée sur la page
 creer_session_storage();
 
 creer_liste_tri();
@@ -28,6 +31,10 @@ bouton_accueil.addEventListener('click', function() {
     creer_liste_tri();
     creer_liste_nombre_affichage();
     afficher_BD_random(tableau_storage_category_last, nombre_BD_category);
+
+});
+
+bouton_utilisateur.addEventListener('click', function() {
 
 });
 

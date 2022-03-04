@@ -13,7 +13,7 @@
 
 <body>
     <!-- navbar -->
-    <p></p>
+
     <div id="barre_navigation" class="w-auto row sticky-top">
         <div class="col-2 col-md-3 p-1 nav-item">
             <button id="accueil" type="button" class="btn"><img class="logo img-fluid" src="assets/BDDrive.svg" alt=""></button>
@@ -99,6 +99,22 @@
         </div>
     </div>
 
+    <!-- détail BD Modal -->
+    <div class="modal fade" id="confirmation_ajout" tabindex="-1" aria-labelledby="confirmation_ajout" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="message_confirmation_ajout" class="row">
+                        Votre produit a bien été ajouté au panier.
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal Log in -->
     <div class="modal fade" id="connexion_modal" tabindex="-1" aria-labelledby="connexion_modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
@@ -114,6 +130,10 @@
                         <label for="password">mot de passe</label>
                         <input type="password" name="password" id="password">
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button id="bouton_connexion" type="button" class="btn btn-primary">Connexion</button>
                 </div>
             </div>
         </div>

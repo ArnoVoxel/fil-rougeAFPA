@@ -43,7 +43,6 @@ form.nosubmit {
 }
 
 input.nosubmit {
-    /* max-width: 250px; */
     filter: invert(25%) sepia(67%) saturate(2289%) hue-rotate(352deg) brightness(92%) contrast(94%);
     border: 1px solid #555;
     display: block;
@@ -97,6 +96,10 @@ button {
 .bouton_panier_card>img {
     height: 28px;
     width: auto;
+}
+
+.resume_police {
+    font-family: 'Comic Sans MS';
 }
 
 

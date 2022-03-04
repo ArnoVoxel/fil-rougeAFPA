@@ -288,7 +288,7 @@ function creer_liste_tri() {
     //liste déroulante pour affichage desktop
     var div_category2_container = document.createElement('div');
     div_category2_container.setAttribute('id', 'category2');
-    div_category2_container.setAttribute('class', 'col-6');
+    div_category2_container.setAttribute('class', 'col-2');
     document.getElementById('body_page').appendChild(div_category2_container);
 
     var label_category2 = document.createElement('label');

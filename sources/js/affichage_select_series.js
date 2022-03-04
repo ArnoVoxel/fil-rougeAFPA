@@ -91,7 +91,7 @@ function create_series_elements(album_key, id_album) {
     secondary_row.appendChild(header_col);
 
     var col_img = document.createElement("img");
-    col_img.setAttribute("class", "card-img-top")
+    col_img.setAttribute("class", "card-img-top img-fluid")
     col_img.setAttribute(
         "src",
         "../sources/albumsMini/" +

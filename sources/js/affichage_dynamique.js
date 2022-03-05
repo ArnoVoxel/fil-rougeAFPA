@@ -83,7 +83,7 @@ function creer_session_storage() {
  */
 function afficher_BD_random(tableau_category, nombre_affichage) {
 
-    document.getElementById('search_results_name').textContent = '';
+    document.getElementById('search_container').textContent = '';
     document.getElementById('body_page').textContent = '';
 
     creer_liste_tri();
@@ -116,8 +116,8 @@ function afficher_BD_random(tableau_category, nombre_affichage) {
         card_category.style = 'width : 12rem;';
         card_category.style.backgroundColor = "#F3D8CD";
         card_category.style.padding = "1vh";
-        card_category.style.margin = "1vh";
-        card_category.setAttribute('class', 'col-6 col-md-3');
+        
+        card_category.setAttribute('class', 'card col-6 col-md-3');
         document.getElementById('show_bd').appendChild(card_category);
 
         var card_image = document.createElement('img');

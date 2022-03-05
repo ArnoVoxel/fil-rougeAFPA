@@ -4,10 +4,8 @@ function display_series(e) {
     // condition qui vérifie le clique sur séries
     if (e.target.value === "series") {
         // vide le contenu de bd_container
-
-        // document.getElementById('bd_container').textContent = "";
-
         document.getElementById('body_page').textContent = '';
+        document.getElementById('random_display').textContent = '';
         creer_liste_tri();
         document.getElementById('mobile_selection').removeEventListener('change', affichage_contenu_category, true);
 
@@ -20,8 +18,7 @@ function display_series(e) {
         var ul = document.createElement("ul");
         ul.setAttribute("id", "list_result_series");
         ul.setAttribute("class", "row");
-        // ul.style.height = "600px";
-        // ul.style.overflow-y = "scroll";
+      
         bd_container.appendChild(ul);
 
         // boucle sur la map series
@@ -43,11 +40,22 @@ function display_series(e) {
 
 // compare l'id en cours avec l'idSérie de album
 function check_series_id() {
+    document.getElementById("search_container").textContent = "";
+    document.getElementById('body_page').textContent = '';
+    document.getElementById("random_display").textContent = "";
     var results_number = 0;
     var active_series = this.textContent;
     display_active_series(active_series);
 
     var number = document.createElement("p");
+
+    document.getElementById("search_container").appendChild(number)
+
+    var list_result_series = document.createElement("ul");
+    list_result_series.id = "list_result_series";
+    list_result_series.className = "row";
+    document.getElementById("search_container").appendChild(list_result_series)
+
 
     for (let [id_album, value] of albums.entries()) {
         if (this.id === value.idSerie) {
@@ -57,18 +65,17 @@ function check_series_id() {
         }
     }
     number.textContent = "Nombre de résultat(s) : " + results_number;
-    var list = document.getElementById("list_result_series");
-    list.insertBefore(number, list.children[1]);
+
 }
 
 // affiche le nom en cours
 function display_active_series(active_series) {
-    document.getElementById("list_result_series").textContent = "";
+    
     var serie_name = document.createElement("h2");
     serie_name.setAttribute("class", "col-12");
     serie_name.style.margin = "2vh";
     serie_name.textContent = active_series;
-    document.getElementById("list_result_series").appendChild(serie_name);
+    document.getElementById("search_container").appendChild(serie_name);
 }
 
 // création de l'élément à apparaitre à chaque correspondance entre l'id en cours et l'id série
@@ -94,7 +101,7 @@ function create_series_elements(album_key, id_album) {
     col_img.setAttribute("class", "card-img-top img-fluid")
     col_img.setAttribute(
         "src",
-        "../sources/albumsMini/" +
+        "../sources/albums/" +
         series.get(album_key.idSerie).nom.replace(regex, "") +
         "-" +
         album_key.numero +

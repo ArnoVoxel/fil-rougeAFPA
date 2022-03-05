@@ -3,8 +3,9 @@ function display_authors(e) {
     // condition qui vérifie le clique sur auteurs
     if (e.target.value === "authors") {
         // vide le contenu de bd_container
-        // document.getElementById('bd_container').textContent = '';
+        document.getElementById('random_display').textContent = '';
         document.getElementById('body_page').textContent = '';
+
         creer_liste_tri();
 
         var bd_container = document.createElement('div');
@@ -18,8 +19,6 @@ function display_authors(e) {
         var ul = document.createElement("ul");
         ul.setAttribute("id", "list_result_authors");
         ul.setAttribute("class", "row");
-        // ul.style.height = "600px";
-        // ul.style.overflow-y = "scroll";
         bd_container.appendChild(ul);
 
         // boucle sur la map auteur
@@ -39,11 +38,20 @@ function display_authors(e) {
 
 // compare l'id en cours avec l'idAuteur de album
 function check_authors_id() {
+    document.getElementById("search_container").textContent = "";
+    document.getElementById('body_page').textContent = '';
+    document.getElementById("random_display").textContent = "";
     var results_number = 0;
     var active_author = this.textContent;
     display_active_author(active_author);
 
     var number = document.createElement("p");
+    document.getElementById("search_container").appendChild(number)
+
+    var list_result_authors = document.createElement("ul");
+    list_result_authors.id = "list_result_authors";
+    list_result_authors.className = "row";
+    document.getElementById("search_container").appendChild(list_result_authors)
 
     for (let [id, value] of albums.entries()) {
         if (this.id === value.idAuteur) {
@@ -53,18 +61,17 @@ function check_authors_id() {
         }
     }
     number.textContent = "Nombre de résultat(s) : " + results_number;
-    var list = document.getElementById("list_result_authors");
-    list.insertBefore(number, list.children[1]);
+    
 }
 
 // affiche le nom en cours
 function display_active_author(active_author) {
-    document.getElementById("list_result_authors").textContent = "";
+    
     var author_name = document.createElement("h2");
     author_name.setAttribute("class", "col-12");
     author_name.style.margin = "2vh";
     author_name.textContent = active_author;
-    document.getElementById("list_result_authors").appendChild(author_name);
+    document.getElementById("search_container").appendChild(author_name);
 }
 
 // création de l'élément à apparaitre à chaque correspondance entre l'id en cours et l'id auteur
@@ -89,7 +96,7 @@ function create_authors_elements(album_key, id_album) {
     col_img.setAttribute("class", "card-img-top img-fluid")
     col_img.setAttribute(
         "src",
-        "../sources/albumsMini/" +
+        "../sources/albums/" +
         series.get(album_key.idSerie).nom.replace(regex, "") +
         "-" +
         album_key.numero +

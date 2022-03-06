@@ -12,8 +12,11 @@ function affichage_elements_category(e) {
  */
 function affichage_contenu_category(e) {
     document.getElementById('body_page').textContent = '';
+    document.getElementById('nombre_bd').textContent = '';
     //creer_liste_tri();
-    //creer_liste_nombre_affichage();
+    creer_liste_nombre_affichage();
+    //document.getElementById('nombre_bd').style.display = 'inline-block';
+
 
     var bd_container = document.createElement('div');
     bd_container.setAttribute('id', 'bd_container');

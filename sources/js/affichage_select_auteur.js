@@ -5,9 +5,11 @@ function display_authors(e) {
         // vide le contenu de bd_container
         document.getElementById('random_display').textContent = '';
         document.getElementById('body_page').textContent = '';
+        document.getElementById('nombre_bd').textContent = '';
 
         //creer_liste_tri();
-        document.getElementById('nombre_bd').style.visibility = 'hidden';
+        //document.getElementById('nombre_bd').style.visibility = 'hidden';
+        //document.getElementById('nombre_bd').style.display = 'none';
 
         var bd_container = document.createElement('div');
         bd_container.setAttribute('id', 'bd_container');

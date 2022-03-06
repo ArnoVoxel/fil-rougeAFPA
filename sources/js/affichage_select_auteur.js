@@ -6,7 +6,8 @@ function display_authors(e) {
         document.getElementById('random_display').textContent = '';
         document.getElementById('body_page').textContent = '';
 
-        creer_liste_tri();
+        //creer_liste_tri();
+        document.getElementById('nombre_bd').style.visibility = 'hidden';
 
         var bd_container = document.createElement('div');
         bd_container.setAttribute('id', 'bd_container');

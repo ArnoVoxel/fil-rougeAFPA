@@ -12,24 +12,39 @@ var bouton_accueil = document.getElementById('accueil');
 var bouton_panier_affichage_infos_modal = document.getElementById('ajout_panier_détail_bd');
 var bouton_utilisateur = document.getElementById('utilisateur');
 
+var select_mobile = document.getElementById('category');
+var select_desktop = document.getElementById('category2');
+var select_number = document.getElementById('nombre_bd');
+
 var nb_random = 0;
 
 //attention aux accents dans les noms d'images
 //RegEx pour les supprimer dans la concaténation
 const regex = /['!?.":$]/g;
 
+//abonnements des select
+select_mobile.addEventListener('change', affichage_contenu_category);
+select_mobile.addEventListener('change', display_series);
+select_mobile.addEventListener('change', display_authors);
+
+select_desktop.addEventListener('change', affichage_contenu_category);
+select_desktop.addEventListener('change', display_series);
+select_desktop.addEventListener('change', display_authors);
+
+select_number.addEventListener('change', affichage_elements_category);
 
 //pour affichage à l'arrivée sur la page
 creer_session_storage();
 
-creer_liste_tri();
-creer_liste_nombre_affichage();
+//creer_liste_tri();
+//creer_liste_nombre_affichage();
 afficher_BD_random(tableau_storage_category_last, nombre_BD_category);
 
 bouton_accueil.addEventListener('click', function() {
 
-    creer_liste_tri();
-    creer_liste_nombre_affichage();
+    //creer_liste_tri();
+    //creer_liste_nombre_affichage();
+    select_number.style.visibility = 'visible';
     afficher_BD_random(tableau_storage_category_last, nombre_BD_category);
 
 });
@@ -86,14 +101,18 @@ function afficher_BD_random(tableau_category, nombre_affichage) {
     document.getElementById('search_container').textContent = '';
     document.getElementById('body_page').textContent = '';
 
-    creer_liste_tri();
-    creer_liste_nombre_affichage();
+    //creer_liste_tri();
+    //creer_liste_nombre_affichage();
+
+    var row_container_accueil = document.createElement('div');
+    row_container_accueil.setAttribute('class', 'row');
+    document.getElementById('body_page').appendChild(row_container_accueil);
 
     //créer les éléments en dynamique pour revenir à l'affichage accueil après une recherche
     var div_container_affichage_accueil = document.createElement('div');
     div_container_affichage_accueil.setAttribute('class', 'col-12 col-md-10');
     div_container_affichage_accueil.setAttribute('id', 'bd_container');
-    document.getElementById('body_page').appendChild(div_container_affichage_accueil);
+    row_container_accueil.appendChild(div_container_affichage_accueil);
 
     var div_row_show_bd = document.createElement('div');
     div_row_show_bd.setAttribute('class', 'row');
@@ -251,7 +270,6 @@ function creer_liste_tri() {
     select_category.setAttribute('class', 'category');
     select_category.setAttribute('name', 'category');
     select_category.setAttribute('id', 'mobile_selection');
-
     //abonnements du select
     select_category.addEventListener('change', affichage_contenu_category);
     select_category.addEventListener('change', display_series);
@@ -300,6 +318,7 @@ function creer_liste_tri() {
     select_category2.setAttribute('class', 'category');
     select_category2.setAttribute('name', 'category2');
     select_category2.setAttribute('id', 'desktop_selection');
+    //abonnements
     select_category2.addEventListener('change', affichage_contenu_category);
     select_category2.addEventListener('change', display_authors);
     select_category2.addEventListener('change', display_series);

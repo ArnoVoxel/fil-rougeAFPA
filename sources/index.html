@@ -73,7 +73,7 @@
 
     <!-- affichage BD en grand taille desktop -->
     <div id="random_display" class="row ms-2 me-5 mb-2 ">
-
+        
     </div>
 
     <!-- champ résultat de recherche -->
@@ -145,8 +145,41 @@
     </div>
 
     <!-- corps de page -->
-    <div id="body_page" class="row">
+    <div class="row">
+        <div class="col-6" id="category">
+            <label for="category">trier par : </label>
+            <select name="category" id="mobile_selection" class="category">
+                <option value="last">dernières sorties</option>
+                <option value="best">meilleures ventes</option>
+                <option value="classic">nos classiques</option>
+                <option value="series">par séries</option>
+                <option value="authors">par auteurs</option>
+            </select>
+        </div>
 
+        <div class="col-6" id="nombre_bd">
+            <label for="nombre_bd">éléments affichés</label>
+            <select name="nombre_bd" class="nombre_bd">
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="12">12</option>
+            </select>
+        </div>
+
+        <div class="col-2" id="category2">
+            <label for="category2">trier par : </label>
+            <select name="category2" id="desktop_selection" class="category">
+                <option value="last">dernières sorties</option>
+                <option value="best">meilleures ventes</option>
+                <option value="classic">nos classiques</option>
+                <option value="series">par séries</option>
+                <option value="authors">par auteurs</option>
+            </select>
+        </div>
+
+        <div class="col-12 col-md-10" id="body_page">
+
+        </div>
     </div>
 
 

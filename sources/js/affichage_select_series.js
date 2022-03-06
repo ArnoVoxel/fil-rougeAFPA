@@ -6,7 +6,9 @@ function display_series(e) {
         // vide le contenu de bd_container
         document.getElementById('body_page').textContent = '';
         document.getElementById('random_display').textContent = '';
-        creer_liste_tri();
+
+        //creer_liste_tri();
+        document.getElementById('nombre_bd').style.visibility = 'hidden';
         document.getElementById('mobile_selection').removeEventListener('change', affichage_contenu_category, true);
 
         var bd_container = document.createElement('div');

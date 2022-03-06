@@ -25,6 +25,7 @@ function search_name() {
 
         random_display.textContent = "";
         body_page.textContent = "";
+        document.getElementById('nombre_bd').textContent = '';
 
         // suppression du message pas de reésultat
         document.getElementById("search_container").textContent = ""

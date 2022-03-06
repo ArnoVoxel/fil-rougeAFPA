@@ -8,10 +8,6 @@ function display_series(e) {
         document.getElementById('random_display').textContent = '';
         document.getElementById('nombre_bd').textContent = '';
 
-        //creer_liste_tri();
-        //document.getElementById('nombre_bd').style.visibility = 'hidden';
-        //document.getElementById('nombre_bd').style.display = 'none';
-
         document.getElementById('mobile_selection').removeEventListener('change', affichage_contenu_category, true);
 
         var bd_container = document.createElement('div');

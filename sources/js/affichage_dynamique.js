@@ -102,28 +102,13 @@ function afficher_BD_random(tableau_category, nombre_affichage) {
     document.getElementById('search_container').textContent = '';
     document.getElementById('body_page').textContent = '';
 
-    //creer_liste_tri();
-    //creer_liste_nombre_affichage();
-
-    var row_container_accueil = document.createElement('div');
-    row_container_accueil.setAttribute('class', 'row');
-    document.getElementById('body_page').appendChild(row_container_accueil);
-
-    //créer les éléments en dynamique pour revenir à l'affichage accueil après une recherche
     var div_container_affichage_accueil = document.createElement('div');
-    div_container_affichage_accueil.setAttribute('class', 'col-12 col-md-10');
+    div_container_affichage_accueil.setAttribute('class', 'row');
     div_container_affichage_accueil.setAttribute('id', 'bd_container');
-    row_container_accueil.appendChild(div_container_affichage_accueil);
-
-    var div_row_show_bd = document.createElement('div');
-    div_row_show_bd.setAttribute('class', 'row');
-    div_row_show_bd.setAttribute('id', 'show_bd');
-    div_container_affichage_accueil.appendChild(div_row_show_bd);
-
+    document.getElementById('body_page').appendChild(div_container_affichage_accueil);
 
     //vider la div
-    document.getElementById('show_bd').textContent = ' ';
-    //document.getElementById('body_page').textContent = ' ';
+    document.getElementById('bd_container').textContent = ' ';
 
     //boucle qui crée le nombre de BD dans la partie category
     //le nombre pourra être modifié par l'utilisateur
@@ -133,12 +118,13 @@ function afficher_BD_random(tableau_category, nombre_affichage) {
 
         //création cards Bootstrap
         var card_category = document.createElement('card');
-        card_category.style = 'width : 12rem;';
+        card_category.style = 'width : 10rem';
         card_category.style.backgroundColor = "#F3D8CD";
         card_category.style.padding = "1vh";
+        card_category.style.margin = "0.5vh";
         
         card_category.setAttribute('class', 'card col-6 col-md-3');
-        document.getElementById('show_bd').appendChild(card_category);
+        document.getElementById('bd_container').appendChild(card_category);
 
         var card_image = document.createElement('img');
         card_image.setAttribute('src', '../sources/albums/' + series.get(objet_album.idSerie).nom.replace(regex, "") + '-' + objet_album.numero + '-' + objet_album.titre.replace(regex, "") + '.jpg');

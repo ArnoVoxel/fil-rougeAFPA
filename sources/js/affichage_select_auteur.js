@@ -7,10 +7,6 @@ function display_authors(e) {
         document.getElementById('body_page').textContent = '';
         document.getElementById('nombre_bd').textContent = '';
 
-        //creer_liste_tri();
-        //document.getElementById('nombre_bd').style.visibility = 'hidden';
-        //document.getElementById('nombre_bd').style.display = 'none';
-
         var bd_container = document.createElement('div');
         bd_container.setAttribute('id', 'bd_container');
         bd_container.setAttribute('class', 'col-12 col-md-10');

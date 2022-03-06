@@ -42,9 +42,10 @@ afficher_BD_random(tableau_storage_category_last, nombre_BD_category);
 
 bouton_accueil.addEventListener('click', function() {
 
+    document.getElementById('nombre_bd').textContent = '';
     //creer_liste_tri();
-    //creer_liste_nombre_affichage();
-    select_number.style.visibility = 'visible';
+    creer_liste_nombre_affichage();
+    // select_number.style.visibility = 'visible';
     afficher_BD_random(tableau_storage_category_last, nombre_BD_category);
 
 });
@@ -355,21 +356,23 @@ function creer_liste_tri() {
  */
 function creer_liste_nombre_affichage() {
 
-    var div_nombre_container = document.createElement('div');
-    div_nombre_container.setAttribute('id', 'nombre_bd');
-    div_nombre_container.setAttribute('class', 'col-6');
-    document.getElementById('body_page').appendChild(div_nombre_container);
+    var col_nombre_bd = document.getElementById('nombre_bd');
+
+    // var div_nombre_container = document.createElement('div');
+    // div_nombre_container.setAttribute('id', 'nombre_bd');
+    // div_nombre_container.setAttribute('class', 'col-6');
+    // document.getElementById('body_page').appendChild(div_nombre_container);
 
     var label_nombre_affichage = document.createElement('label');
     label_nombre_affichage.setAttribute('for', 'nombre_bd');
     label_nombre_affichage.textContent = 'éléments affichés : ';
-    div_nombre_container.appendChild(label_nombre_affichage);
+    col_nombre_bd.appendChild(label_nombre_affichage);
 
     var select_nombre = document.createElement('select');
     select_nombre.setAttribute('class', 'nombre_bd');
     select_nombre.setAttribute('name', 'nombre_bd');
     select_nombre.addEventListener('change', affichage_elements_category);
-    div_nombre_container.appendChild(select_nombre);
+    col_nombre_bd.appendChild(select_nombre);
 
     var option1_nombre = document.createElement('option');
     option1_nombre.setAttribute('value', '4');

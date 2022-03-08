@@ -123,7 +123,7 @@ function afficher_BD_random(tableau_category, nombre_affichage) {
         card_category.style.padding = "1vh";
         card_category.style.margin = "0.5vh";
         
-        card_category.setAttribute('class', 'card col-6 col-md-3');
+        card_category.setAttribute('class', 'card col-6 col-md-3 ms-4');
         document.getElementById('bd_container').appendChild(card_category);
 
         var card_image = document.createElement('img');

@@ -43,7 +43,7 @@ function display_search_results_name(album_key, id_album) {
 
     // ajout du titre
 
-    var title = document.createElement("h4");
+    var title = document.createElement("h5");
     title.setAttribute("class", "card-title");
     title.style.color = "blue";
     title.textContent = album_key.titre;

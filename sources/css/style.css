@@ -64,13 +64,14 @@ input.nosubmit {
     display: none;
 }
 
-.card-title{
+/* .card-title{
     font-size: small;
-}
+    margin-top: 10px;
+} */
 
-.card-text{
+/* .card-text{
     margin: 0;
-}
+} */
 
 .btn {
     color: white;

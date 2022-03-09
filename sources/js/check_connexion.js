@@ -7,6 +7,7 @@ input_identifiant.addEventListener('click', verif_nom);
 //pour pouvoir valider avec la touche entrée du clavier
 input_password.addEventListener('keyup', function(event){
     if(event.key == "Enter"){
+        console.log(event.key);
         verif_nom();
     }
 });
@@ -25,11 +26,19 @@ function verif_nom(){
 
     if(input_check == "" || password_check == ""){
         alert("entrez un identifiant et un mot de passe");
-    } else if (input_check == utilisateurs.get("1").nom && password_check == utilisateurs.get("1").mdp){
-        alert('vous êtes gestionnaire');
-    } else if (input_check == utilisateurs.get("2").nom && password_check == utilisateurs.get("2").mdp){
-        alert('Bonjour cher client, bienvenue sur votre site préféré');
     } else {
-        alert("l'identifiant ou le mot de passe sont incorrects");
+        var compteur_erreurs = 0;
+        for (let i =1; i <= utilisateurs.size; i++) {
+            if(input_check == utilisateurs.get(i.toString()).nom && password_check == utilisateurs.get(i.toString()).mdp){
+                alert('Bonjour,\n'+input_check+' bienvenue!');
+            } else {
+                compteur_erreurs++;
+            }
+        }
+        if(compteur_erreurs == utilisateurs.size) {
+            alert("l'identifiant ou le mot de passe sont incorrects");
+        }
     }
+    document.getElementById('identifiant').value = '';
+    document.getElementById('password').value ='';
 }

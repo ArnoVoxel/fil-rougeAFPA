@@ -139,6 +139,8 @@ function create_series_elements(album_key, id_album) {
 
     var button_panier_serie = document.createElement('button');
     button_panier_serie.setAttribute('class', 'btn btn-primary');
+    button_panier_serie.setAttribute('data-bs-toggle', 'modal');
+    button_panier_serie.setAttribute('data-bs-target', '#confirmation_ajout');
     button_panier_serie.textContent = 'ajout panier';
     button_panier_serie.addEventListener('click', creer_ligne_panier);
     button_panier_serie.addEventListener('click', bulle_bouton_panier);

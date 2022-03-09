@@ -75,7 +75,6 @@ function display_active_author(active_author) {
 
 // création de l'élément à apparaitre à chaque correspondance entre l'id en cours et l'id auteur
 function create_authors_elements(album_key, id_album) {
-    console.log(album_key);
     var li = document.createElement("li");
     li.setAttribute("class", "card col-6 col-sm-4 col-md-3 col-xl-2");
     li.style.backgroundColor = "#F3D8CD";
@@ -132,6 +131,8 @@ function create_authors_elements(album_key, id_album) {
 
     var button_panier_serie = document.createElement('button');
     button_panier_serie.setAttribute('class', 'btn btn-primary');
+    button_panier_serie.setAttribute('data-bs-toggle', 'modal');
+    button_panier_serie.setAttribute('data-bs-target', '#confirmation_ajout');
     button_panier_serie.textContent = 'ajout panier';
     button_panier_serie.addEventListener('click', creer_ligne_panier);
     button_panier_serie.addEventListener('click', bulle_bouton_panier);

@@ -120,15 +120,32 @@
                 </div>
                 <div class="modal-body">
                     <div id="infos_connexion_modal" class="row">
-                        <label for="identifiant">identifiant</label>
-                        <input type="text" name="identifiant" id="identifiant" autofocus>
-                        <label for="password">mot de passe</label>
-                        <input type="password" name="password" id="password">
+                        <label for="identifiant">Entrez votre identifiant : </label>
+                        <input type="text" name="identifiant" id="identifiant" placeholder="identifiant" required>
+                        <label for="password">Votre mot de passe : </label>
+                        <input type="password" name="password" id="password" placeholder="mot de passe" required>
                     </div>
+
+                    <!-- <form id="infos_connexion_modal">
+                        <div class="mb-3">
+                          <label for="identifiant" class="form-label">Entrez votre identifiant :</label>
+                          <input type="text" class="form-control" id="identifiant" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                          <label for="password" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="password">
+                        </div>
+                        <div class="mb-3 form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Mémoriser</label>
+                        </div>
+                        <button id="bouton_connexion" type="submit" class="btn btn-primary">Connexion</button>
+                      </form> -->
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button id="bouton_connexion" type="button" class="btn btn-primary">Connexion</button>
+                    <button id="bouton_connexion" type="submit" class="btn btn-primary">Connexion</button>
                 </div>
             </div>
         </div>

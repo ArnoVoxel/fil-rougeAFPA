@@ -156,6 +156,8 @@ function afficher_BD_random(tableau_category, nombre_affichage) {
 
         var card_bouton_panier = document.createElement('button');
         card_bouton_panier.setAttribute('class', 'btn btn-primary bouton_panier_card');
+        card_bouton_panier.setAttribute('data-bs-toggle', 'modal');
+        card_bouton_panier.setAttribute('data-bs-target', '#confirmation_ajout');
         card_bouton_panier.innerHTML = '<img class="logo img-fluid" src="assets/panier.svg" alt="">';
         card_bouton_panier.addEventListener('click', creer_ligne_panier);
         card_bouton_panier.addEventListener('click', bulle_bouton_panier);
